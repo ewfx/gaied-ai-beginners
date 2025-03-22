@@ -1,87 +1,106 @@
-import os
 import email
+import os
+import json
+from email import policy
 from email.parser import BytesParser
-from email.header import decode_header
-import PyPDF2
-from docx import Document
-from PIL import Image
-from openapi_core import OpenAPIRequest
 
-# Folder containing email files
-EMAIL_FOLDER = 'E:\Hackthon 2025\gaied-ai-beginners\code\src\Emails'
+def save_attachment(part, save_path):
+    """Save attachment from the email part and return its content"""
+    filename = part.get_filename()
+    if filename:
+        file_path = os.path.join(save_path, filename)
+        with open(file_path, 'wb') as f:
+            content = part.get_payload(decode=True)
+            f.write(content)
+        return {"filename": filename, "path": file_path, "content_type": part.get_content_type(), "content": content.hex()}
+    return None
 
-# Loop through email files
-for filename in os.listdir(EMAIL_FOLDER):
-    if filename.endswith('.eml') or filename.endswith('.msg'):
-        file_path = os.path.join(EMAIL_FOLDER, filename)
+def process_email_content(subject, body, attachments):
+    """Process email content and classify request type"""
+    request_types = {"Technical Issue": ["error", "bug", "issue"],
+                     "Billing": ["invoice", "payment", "refund"]}
+    
+    match_scores = {}
+    
+    for req_type, keywords in request_types.items():
+        match_count = sum(1 for word in keywords if word in body.lower() or word in subject.lower())
+        match_scores[req_type] = (match_count / len(keywords)) * 100  # Percentage match
+    
+    best_match = max(match_scores, key=match_scores.get)
+    
+    return {
+        "request_type": best_match,
+        "match_percentage": match_scores[best_match]
+    }
 
-        # Parse email message
-        with open(file_path, 'rb') as file:
-            message = BytesParser().parsebytes(file.read())
-
-        # Extract email subject and body
-        subject = decode_header(message['Subject'])[0][0]
-        body = ''
-        if message.is_multipart():
-            for part in message.walk():
+def read_email_with_attachments(file_path, save_dir):
+    """Read an email file and process its content, returning JSON output"""
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+    
+    with open(file_path, 'rb') as file:
+        msg = BytesParser(policy=policy.default).parse(file)
+        
+        subject = msg['subject']
+        from_email = msg['from']
+        to_email = msg['to']
+        date = msg['date']
+        
+        body = ""
+        attachments = []
+        
+        if msg.is_multipart():
+            for part in msg.iter_parts():
                 content_type = part.get_content_type()
                 content_disposition = str(part.get('Content-Disposition'))
-                try:
-                    body = part.get_payload(decode=True).decode()
-                except:
-                    pass
+                
+                if content_type in ['text/plain', 'text/html']:
+                    body += part.get_payload(decode=True).decode(part.get_content_charset(), errors='ignore')
+                elif 'attachment' in content_disposition:
+                    attachment_info = save_attachment(part, save_dir)
+                    if attachment_info:
+                        attachments.append(attachment_info)
+        else:
+            body = msg.get_payload(decode=True).decode(msg.get_content_charset())
         
-        # Extract attachments
-        attachments = []
-        for part in message.walk():
-            if part.get_content_maintype() == 'multipart':
-                continue
-            if part.get('Content-Disposition') is None:
-                continue
-            filename = part.get_filename()
-            if filename:
-                attachments.append(filename)
+        classification = process_email_content(subject, body, attachments)
         
-        # Read attachment contents
-        attachment_contents = []
-        for attachment in attachments:
-            if attachment.endswith('.pdf'):
-                pdf_file = open(attachment, 'rb')
-                pdf_reader = PyPDF2.PdfFileReader(pdf_file)
-                num_pages = pdf_reader.numPages
-                for page in range(num_pages):
-                    page_obj = pdf_reader.getPage(page)
-                    attachment_contents.append(page_obj.extractText())
-            elif attachment.endswith('.docx'):
-                doc = Document(attachment)
-                for para in doc.paragraphs:
-                    attachment_contents.append(para.text)
-            elif attachment.endswith(('.jpg', '.png', '.gif')):
-                img = Image.open(attachment)
-                attachment_contents.append(img.size)
+        email_data = {
+            "subject": subject,
+            "from": from_email,
+            "to": to_email,
+            "date": date,
+            "body": body,
+            "attachments": attachments,
+            "classification": classification
+        }
+        
+        output_path = os.path.join(save_dir, "email_output.json")
+        with open(output_path, 'w', encoding='utf-8') as json_file:
+            json.dump(email_data, json_file, indent=4)
+        
+        return email_data
 
-        # Create OpenAPI request
-        openapi_request = OpenAPIRequest(
-            method='POST',
-            path='/requests',
-            body={
-                'subject': subject,
-                'body': body,
-                'attachments': attachments,
-                'attachment_contents': attachment_contents
-            }
-        )
+def process_emails_in_folder(email_folder, output_folder):
+    """Process all .eml files in a folder and save JSON output"""
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+    
+    for filename in os.listdir(email_folder):
+        if filename.endswith('.eml'):
+            email_file_path = os.path.join(email_folder, filename)
+            email_output_dir = os.path.join(output_folder, filename.replace('.eml', ''))
+            if not os.path.exists(email_output_dir):
+                os.makedirs(email_output_dir)
+            
+            email_data = read_email_with_attachments(email_file_path, email_output_dir)
+            json_output_path = os.path.join(email_output_dir, f"{filename.replace('.eml', '.json')}")
+            with open(json_output_path, 'w', encoding='utf-8') as json_file:
+                json.dump(email_data, json_file, indent=4)
+            print(json.dumps(email_data, indent=4))
 
-        # Determine request type and sub-request type
-        request_types = ['request_type_1', 'request_type_2', 'request_type_3']
-        sub_request_types = ['sub_request_type_1', 'sub_request_type_2', 'sub_request_type_3']
-        request_type_probabilities = [0.4, 0.3, 0.3]
-        sub_request_type_probabilities = [0.6, 0.2, 0.2]
+# Example usage
+email_folder = 'E:\\Hackthon 2025\\gaied-ai-beginners\\code\\src\\Emails'
+output_folder = 'emails_output'
 
-        # Print request type and sub-request type with probabilities
-        print('Request Type:')
-        for i, request_type in enumerate(request_types):
-            print(f'{request_type}: {request_type_probabilities[i] * 100}%')
-        print('Sub-RequestType:')
-        for i, sub_request_type in enumerate(sub_request_types):
-            print(f'{sub_request_type}: {sub_request_type_probabilities[i] * 100}%')
+process_emails_in_folder(email_folder, output_folder)
