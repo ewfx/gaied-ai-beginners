@@ -16,4 +16,8 @@ export class ApiService {
     const payload = { prompt };
     return this.http.post(`${this.baseUrl}/classify/`, payload);
   }
+
+  classyfyContent(prompt: string): Observable<any> {    
+    return this.http.get(`${this.baseUrl}/classify-content/{prompt}`);
+  }
 }

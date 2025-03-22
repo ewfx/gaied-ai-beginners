@@ -36,5 +36,12 @@ export class AppComponent {
       }
     );
   }
+  classifyContent () {
+    this.apiService.classyfyContent(this.prompt).subscribe(
+      (data) => {
+        this.response = data.response; 
+        this.isLoading = false; 
+      });
+  }
 }
 

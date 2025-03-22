@@ -1,0 +1,76 @@
+{
+  "Loan Services": [
+    "Loan Application",
+    "Loan Pre-Approval Inquiry",
+    "Loan Status Inquiry",
+    "Loan Repayment Schedule",
+    "Loan Foreclosure/Prepayment",
+    "Loan Restructuring",
+    "Loan Interest Rate Inquiry",
+    "Loan EMI Calculation",
+    "Loan Document Submission",
+    "Loan Eligibility Check"
+  ],
+  "Home Loan": [
+    "Home Loan Application",
+    "Home Loan Status Inquiry",
+    "Home Loan Repayment Schedule",
+    "Home Loan Foreclosure",
+    "Home Loan Interest Rate Inquiry"
+  ],
+  "Personal Loan": [
+    "Personal Loan Application",
+    "Personal Loan Status Inquiry",
+    "Personal Loan Repayment Schedule",
+    "Personal Loan Foreclosure",
+    "Personal Loan Interest Rate Inquiry"
+  ],
+  "Car Loan": [
+    "Car Loan Application",
+    "Car Loan Status Inquiry",
+    "Car Loan Repayment Schedule",
+    "Car Loan Foreclosure",
+    "Car Loan Interest Rate Inquiry"
+  ],
+  "Education Loan": [
+    "Education Loan Application",
+    "Education Loan Status Inquiry",
+    "Education Loan Repayment Schedule",
+    "Education Loan Foreclosure",
+    "Education Loan Interest Rate Inquiry"
+  ],
+  "Business Loan": [
+    "Business Loan Application",
+    "Business Loan Status Inquiry",
+    "Business Loan Repayment Schedule",
+    "Business Loan Foreclosure",
+    "Business Loan Interest Rate Inquiry"
+  ],
+  "Loan Disbursement": [
+    "Loan Disbursement Status",
+    "Loan Disbursement Delay Inquiry",
+    "Loan Disbursement Confirmation"
+  ],
+  "Loan Closure": [
+    "Loan Closure Request",
+    "Loan Closure Certificate Request",
+    "Loan Closure Status Inquiry"
+  ],
+  "Loan Account Management": [
+    "Update Loan Account Details",
+    "Change Loan Repayment Method",
+    "Add/Remove Co-Borrower",
+    "Loan Account Statement Request"
+  ],
+  "Loan Security and Collateral": [
+    "Collateral Submission",
+    "Collateral Release Request",
+    "Collateral Valuation Inquiry"
+  ],
+  "Loan Complaints": [
+    "Loan Processing Delay Complaint",
+    "Loan Disbursement Issue",
+    "Incorrect EMI Deduction",
+    "Loan Account Discrepancy"
+  ]
+}
