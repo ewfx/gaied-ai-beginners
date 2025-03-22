@@ -38,23 +38,28 @@ Describe the major technical or non-technical challenges your team encountered.
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/ewfx/gaied-ai-beginners.git
    ```
 2. Install dependencies  
    ```sh
-   npm install  # or pip install -r requirements.txt (for Python)
+   >> npm install concurrently --save-dev // only first time
    ```
+    ```sh
+   >> npm run build:first   // only first time
+   ```
+   
 3. Run the project  
    ```sh
    npm start  # or python app.py
    ```
 
 ## 🏗️ Tech Stack
-- 🔹 Frontend: React / Vue / Angular
-- 🔹 Backend: Node.js / FastAPI / Django
+- 🔹 Frontend:  Angular
+- 🔹 Backend: FastAPI
 - 🔹 Database: PostgreSQL / Firebase
-- 🔹 Other: OpenAI API / Twilio / Stripe
+- 🔹 Other: OpenAI API
 
 ## 👥 Team
-- **Your Name** - [GitHub](#) | [LinkedIn](#)
-- **Teammate 2** - [GitHub](#) | [LinkedIn](#)
+- **Manimaran M** - [GitHub](https://github.com/uk2nk?tab=repositories) | [LinkedIn](#)
+- **Udhayakumar G** - [GitHub](#) | [LinkedIn](#)
+- **Kannan Krishnan** - [GitHub](#) | [LinkedIn](#)
