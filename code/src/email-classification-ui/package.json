@@ -1,13 +1,16 @@
 {
   "name": "email-classification-ui",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
+  "version": "0.0.1",
+ "scripts": {
+  "ng": "ng",
+  "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+  "start:frontend": "ng serve --host 0.0.0.0 --port 4200",
+  "start:backend": "cd ../ && python -m uvicorn app:app --reload --host 127.0.0.1 --port 8000",
+  "build": "ng build",
+  "build:first":"npm install && cd ../ && pip install -r requirements.txt",
+  "watch": "ng build --watch --configuration development",
+  "test": "ng test"
+},
   "private": true,
   "dependencies": {
     "@angular/common": "^19.2.0",
