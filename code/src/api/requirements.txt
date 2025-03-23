@@ -1,0 +1,11 @@
+openai==0.28.0
+python-dotenv
+fastapi
+uvicorn
+pydantic
+extract-msg
+python-docx 
+PyPDF2 
+pdfplumber
+pytesseract
+pillow

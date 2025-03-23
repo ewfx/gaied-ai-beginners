@@ -1,0 +1,129 @@
+{
+  "CommercialBankLendingService": {
+    "RequestTypes": [
+      {
+        "type": "Loan Application",
+        "subRequestTypes": [
+          "Personal Loan Application",
+          "Business Loan Application",
+          "Home Loan Application",
+          "Auto Loan Application",
+          "Student Loan Application"
+        ]
+      },
+      {
+        "type": "Loan Modification",
+        "subRequestTypes": [
+          "Interest Rate Change",
+          "Loan Term Extension",
+          "Repayment Schedule Adjustment",
+          "Refinancing Request"
+        ]
+      },
+      {
+        "type": "Loan Disbursement",
+        "subRequestTypes": [
+          "Disbursement of Personal Loan",
+          "Disbursement of Business Loan",
+          "Disbursement of Mortgage Loan",
+          "Disbursement of Auto Loan"
+        ]
+      },
+      {
+        "type": "Loan Repayment",
+        "subRequestTypes": [
+          "Full Repayment",
+          "Partial Repayment",
+          "Early Repayment Request",
+          "Regular Installment Payment"
+        ]
+      },
+      {
+        "type": "Loan Closure",
+        "subRequestTypes": [
+          "Loan Paid Off",
+          "Loan Settlement",
+          "Account Closure Request"
+        ]
+      },
+      {
+        "type": "Loan Renewal",
+        "subRequestTypes": [
+          "Personal Loan Renewal",
+          "Business Loan Renewal",
+          "Mortgage Loan Renewal"
+        ]
+      },
+      {
+        "type": "Loan Status Inquiry",
+        "subRequestTypes": [
+          "Loan Approval Status",
+          "Loan Repayment Status",
+          "Loan Disbursement Status",
+          "Loan Remaining Balance"
+        ]
+      },
+      {
+        "type": "Adjustment",
+        "subRequestTypes": [
+          "Account Adjustment Request",
+          "Interest Rate Adjustment",
+          "Principal Adjustment",
+          "Repayment Plan Adjustment"
+        ]
+      },
+      {
+        "type": "AU Transfer",
+        "subRequestTypes": [
+          "Transfer of Loan to AU Account",
+          "AU Loan Transfer Request"
+        ]
+      },
+      {
+        "type": "Closing Notice",
+        "subRequestTypes": [
+          "Loan Account Closing Notice",
+          "Pre-Closing Loan Notice",
+          "Final Loan Settlement Notice"
+        ]
+      },
+      {
+        "type": "Commitment Change",
+        "subRequestTypes": [
+          "Change in Loan Commitment",
+          "Amendment of Loan Commitment Terms"
+        ]
+      },
+      {
+        "type": "Fee Payment",
+        "subRequestTypes": [
+          "Loan Processing Fee Payment",
+          "Late Payment Fee Payment",
+          "Prepayment Fee Payment",
+          "Service Fee Payment"
+        ]
+      },
+      {
+        "type": "Money Movement",
+        "subRequestTypes": [
+          {
+            "type": "Inbound",
+            "subRequestTypes": [
+              "Inbound Loan Payment",
+              "Inbound Transfer from Another Bank",
+              "Inbound Payment from Borrower"
+            ]
+          },
+          {
+            "type": "Outbound",
+            "subRequestTypes": [
+              "Outbound Loan Disbursement",
+              "Outbound Transfer to Borrower",
+              "Outbound Transfer to Another Bank"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -158,12 +158,16 @@ Non-Technical Challenges
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/ewfx/gaied-ai-beginners.git
    ```
 2. Install dependencies  
    ```sh
-   npm install  # or pip install -r requirements.txt (for Python)
+   >> npm install concurrently --save-dev // only first time
    ```
+    ```sh
+   >> npm run build:first   // only first time
+   ```
+   
 3. Run the project  
    ```sh
    npm start  # or python app.py
@@ -173,7 +177,7 @@ Non-Technical Challenges
 - 🔹 Frontend: Angular
 - 🔹 Backend: Node.js / FastAPI 
 - 🔹 Database: PostgreSQL / Firebase
-- 🔹 Other: OpenAI API 
+- 🔹 Other: OpenAI API , [Tesseract](https://github.com/tesseract-ocr/tesseract/releases)
 
 ## 👥 Team
 
