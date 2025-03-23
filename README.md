@@ -1,5 +1,4 @@
 # 🚀 Gen AI-Based Email Classification and OCR
-
 ## 📌 Table of Contents
 - [Introduction](#introduction)
 - [Demo](#demo)
@@ -13,7 +12,7 @@
 
 ---
 
-## 🎯 Introduction #introduction
+## 🎯 Introduction 
 A brief overview of your project and its purpose. Mention which problem statement are your attempting to solve. Keep it concise and engaging.
 
 Project Overview:
