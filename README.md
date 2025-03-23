@@ -171,10 +171,10 @@ Non-Technical Challenges
    ```
 
 ## 🏗️ Tech Stack
-- 🔹 Frontend: React / Vue / Angular
-- 🔹 Backend: Node.js / FastAPI / Django
+- 🔹 Frontend: Angular
+- 🔹 Backend: Node.js / FastAPI 
 - 🔹 Database: PostgreSQL / Firebase
-- 🔹 Other: OpenAI API / Twilio / Stripe
+- 🔹 Other: OpenAI API 
 
 ## 👥 Team
 - **Kannan K**      - [GitHub](https://github.com/uk2nk) | [LinkedIn](https://www.linkedin.com/in/kannan-krishnan-a7693b61/)
