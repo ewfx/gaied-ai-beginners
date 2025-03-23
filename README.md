@@ -100,9 +100,9 @@ Briefly outline the technologies, frameworks, and tools used in development.
 
 Technologies & Tools Used
 1.	Programming Language
-    - #Python# – Core development language for email processing, text extraction, and classification.
+    - ##Python## – Core development language for email processing, text extraction, and classification.
 2.	Email Processing
-    -	#email.policy, email.parser# – To parse and process email content and attachments.
+    -	##email.policy, email.parser## – To parse and process email content and attachments.
 3.	Text Extraction & OCR
     - pdfplumber – Extracts text from PDFs with structured layout handling.
     - python-docx – Reads and extracts content from Word documents (.docx).
