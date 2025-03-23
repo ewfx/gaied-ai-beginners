@@ -1,32 +1,36 @@
-
 <div class="container mt-5">
-  <h1>Email Classification</h1>
+  <h1 class="text-center">Email Classification</h1>
   
-  <form (ngSubmit)="classifyContent()">
-    <div>
-      <label for="prompt">Prompt:</label>
-      <textarea
-        id="prompt"
-        [(ngModel)]="prompt"
-        name="prompt"
-        rows="5"
-        cols="50"
-        required
-      ></textarea>
-    </div>
-    <div>
-      <button type="submit" [disabled]="isLoading">
-        {{ isLoading ? 'Classifying...' : 'Classify' }}
-      </button>
-      <button type="submit" [disabled]="isLoading">
-        {{ isLoading ? 'Classifying the Content...' : 'Classify Content' }}
-      </button>
-    </div>
+  <form (ngSubmit)="process_and_classify_emails()" class="mt-4">    
+    <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+      {{ isLoading ? 'Classifying...' : 'Classify' }}
+    </button>
   </form>
-  <div *ngIf="response" class="response">
-    <h2>Response:</h2>
-    <p>{{ response }}</p>
+
+  <div *ngIf="response" class="mt-4">
+    <h2>Classification Result</h2>
+    <div class="card" *ngFor="let resp of response">
+      <div class="card-header">
+        <h3>{{ resp?.email_subject }}</h3>
+      <div class="card-body">
+        <p><strong>Request Type:</strong> {{ resp?.request_type }}</p>
+        <p><strong>Request Subtype:</strong> {{ resp?.request_subtype }}</p>
+        <p><strong>Confidence Score:</strong></p>
+
+        <div class="progress">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            [style.width.%]="resp?.confidence_score"
+            [attr.aria-valuenow]="resp?.confidence_score"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            {{ resp?.confidence_score }}%
+          </div>          
+        </div>
+        <div><p>{{resp?.reasoning}}</p></div>
+      </div>
+    </div>
   </div>
 </div>
-
-<router-outlet />

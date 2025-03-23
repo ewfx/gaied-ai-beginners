@@ -17,31 +17,24 @@ import { ApiService } from '../services/api.service';
 export class AppComponent {
   title = 'email-classification-ui';
   prompt: string = ''; // User input for the prompt
-  response: string | null = null; // Response from the API
+  response: Array<{ 
+    email_subject: string; 
+    request_type: string; 
+    request_subtype: string; 
+    confidence_score: number; 
+    reasoning: string 
+  }> = [];
   isLoading: boolean = false; // Loading state for the button
 
   constructor(private apiService: ApiService) {}
 
-  classifyEmail() {
-    this.isLoading = true; // Set loading state to true
-    this.apiService.classify(this.prompt).subscribe(
+  process_and_classify_emails() {
+    this.apiService.process_and_classify_emails().subscribe(
       (data) => {
-        this.response = data.response; // Set the API response
-        this.isLoading = false; // Reset loading state
-      },
-      (error) => {
-        console.error('Error:', error);
-        this.response = 'An error occurred while classifying the email.';
-        this.isLoading = false; // Reset loading state
-      }
-    );
-  }
-  classifyContent () {
-    this.apiService.classyfyContent(this.prompt).subscribe(
-      (data) => {
-        this.response = data.response; 
+        this.response = Array.isArray(data.response) ? data.response : [data.response]; 
         this.isLoading = false; 
       });
+
   }
 }
 

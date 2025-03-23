@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from aimain import get_classify,classify_content
+from aimain import get_classify,classify_content,process_and_classify_emails
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -26,6 +26,15 @@ def root():
 async def chat_completion(request: ChatRequest):
     try:
         response = get_classify(prompt=request.prompt, model=request.model)
+        return {"response": response}
+    except Exception as e:
+        print(e)
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@app.get("/process_and_classify_emails")
+async def process_and_classify_emails_endpoint():
+    try:
+        response = process_and_classify_emails()       
         return {"response": response}
     except Exception as e:
         print(e)

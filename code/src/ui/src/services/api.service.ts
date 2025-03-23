@@ -20,4 +20,8 @@ export class ApiService {
   classyfyContent(prompt: string): Observable<any> {    
     return this.http.get(`${this.baseUrl}/classify-content/{prompt}`);
   }
+
+  process_and_classify_emails(): Observable<any> {    
+    return this.http.get(`${this.baseUrl}/process_and_classify_emails`);
+  }
 }
