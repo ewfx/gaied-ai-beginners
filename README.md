@@ -101,6 +101,41 @@ Briefly outline the technologies, frameworks, and tools used in development.
 ## 🚧 Challenges We Faced
 Describe the major technical or non-technical challenges your team encountered.
 
+Technical Challenges & Solutions
+1. Extracting Text from Various Attachments
+•	Issue: Different file formats (PDF, DOCX, images) require different extraction methods.
+•	Solution:
+o	Used pdfplumber for structured PDFs and python-docx for Word files.
+o	Applied OCR (pytesseract) with image preprocessing (grayscale + contrast) for scanned documents.
+2. Handling Unstructured Email Content
+•	Issue: Emails contain a mix of HTML, plain text, and inline elements, making extraction tricky.
+•	Solution:
+o	Parsed email parts using email.policy.default.
+o	Converted HTML to text while filtering out signatures and disclaimers with regex.
+3. Improving Email Classification Accuracy
+•	Issue: Simple keyword matching led to incorrect classification.
+•	Solution:
+o	Used TF-IDF scoring to weigh keywords more effectively.
+o	Future enhancement: NLP-based AI model for contextual understanding.
+4. Processing Large Volumes Efficiently
+•	Issue: High email volume caused slow processing due to I/O bottlenecks.
+•	Solution:
+o	Implemented batch processing and asynchronous file handling.
+o	Streamed large attachments instead of loading them into memory.
+________________________________________
+Non-Technical Challenges
+1. Data Privacy & Security
+•	Issue: Handling confidential data in emails and attachments.
+•	Solution: Implemented encryption and secure storage following compliance standards.
+2. Managing Dependencies & Environment Consistency
+•	Issue: Conflicting library versions across different setups.
+•	Solution: Used virtual environments (venv) and standardized dependencies with requirements.txt.
+3. Handling Email Format Variability
+•	Issue: Different email clients format emails inconsistently.
+•	Solution: Collected diverse samples and implemented fallback parsing methods.
+
+
+
 ## 🏃 How to Run
 1. Clone the repository  
    ```sh
