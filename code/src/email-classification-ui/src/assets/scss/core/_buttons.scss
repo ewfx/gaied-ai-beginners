@@ -1,0 +1,269 @@
+@use "../core/mixins";
+@use "../core//mixins/buttons" as mixbtn;
+@use "../core//mixins/forms" as mixforms;
+@use "../core//mixins//vendor-prefixes" as mixprefixes;
+@use "../core/variables/buttons";
+@use "../core/variables/colors";
+@use "../core/variables/shadow";
+@use "../core/variables/bootstrap-material-design" as bmd;
+
+
+$border-radius-sm: 2px !default;
+
+.mat-button.btn,.mat-raised-button.btn,.mat-raised-button.btn:not([class*=mat-elevation-z]),
+.btn{
+  position: relative;
+  padding: 12px 30px;
+  margin: buttons.$bmd-btn-margin-bottom 1px;
+  min-width: auto;
+  font-size: .75rem; //  12px
+  font-weight: 400;
+  line-height: bmd.$bmd-line-height;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  letter-spacing: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-radius: $border-radius-sm;
+  outline: 0;
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: box-shadow, transform;
+  @include mixbtn.undo-bs-tab-focus();
+
+  //--
+  // Colors
+  @include mixbtn.bmd-raised-button-color();
+  &.btn-white {
+      &,
+      &:focus,
+      &:hover {
+          background-color: bmd.$white-color;
+          color: colors.$gray-color;
+      }
+      &.btn-link {
+          color: bmd.$white-color;
+          background: transparent;
+          box-shadow: none;
+      }
+  }
+  &.btn-link:hover,
+  &.btn-link:focus,
+  &.btn-link:active {
+      text-decoration: none !important;
+  }
+
+  // @include mixins.hover-focus();
+
+  //---
+  // btn-raised
+  &.btn-raised,
+  .btn-group-raised & {
+    // baseline shadow
+    // @include box-shadow($bmd-shadow-2dp);
+
+    // reverse any of the above for links
+    &.btn-link {
+      box-shadow: none;
+      // @include hover.bmd-hover-focus-active() {
+      //   box-shadow: none;
+      // }
+    }
+
+    // @include bmd-disabled() {
+    //   box-shadow: none;
+    // }
+  }
+
+  //---
+  // btn-outline
+  // @include bmd-outline-button-color();
+
+  // Size variations
+  &.btn-lg,
+  .btn-group-lg & {
+    @include mixbtn.button-size(buttons.$input-btn-padding-y-lg, buttons.$input-btn-padding-x-lg, buttons.$bmd-btn-font-size, bmd.$btn-lg-line-height, $border-radius-sm);
+  }
+  &.btn-sm,
+  .btn-group-sm & {
+    @include mixbtn.button-size(buttons.$input-btn-padding-y-sm, buttons.$input-btn-padding-x-sm, buttons.$bmd-btn-font-size-sm, bmd.$bmd-line-height, $border-radius-sm);
+  }
+
+  &.btn-round {
+    border-radius: buttons.$border-radius-extreme;
+
+    > .mat-button-focus-overlay, .mat-button-ripple{
+      border-radius: buttons.$border-radius-extreme;
+    }
+  }
+
+  &.btn-fab,
+  &.btn-just-icon {
+      // see above for color variations
+      font-size: bmd.$mdb-btn-fab-font-size;
+      height: bmd.$mdb-btn-fab-size;
+      min-width: $border-radius-sm bmd.$mdb-btn-fab-size;
+      width: bmd.$mdb-btn-fab-size;
+      // margin: auto;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+      line-height: bmd.$mdb-btn-fab-size;
+
+        &.btn-round{
+            border-radius: 50%;
+        }
+
+      .btn-group-sm &,
+      &.btn-sm,
+      &.btn-fab-mini{
+          height: bmd.$mdb-btn-fab-size-mini + 1;
+          min-width: bmd.$mdb-btn-fab-size-mini + 1;
+          width: bmd.$mdb-btn-fab-size-mini + 1;
+
+          .material-icons,
+          .fa{
+              font-size: bmd.$mdb-btn-icon-size-mini;
+              line-height: bmd.$mdb-btn-fab-size-mini;
+          }
+      }
+
+      .btn-group-lg &,
+      &.btn-lg{
+          height: bmd.$mdb-btn-fab-size-lg + 1;
+          min-width: bmd.$mdb-btn-fab-size-lg + 1;
+          width: bmd.$mdb-btn-fab-size-lg + 1;
+          line-height: bmd.$mdb-btn-fab-size-lg;
+
+          .material-icons,
+          .fa{
+              font-size: bmd.$mdb-btn-icon-size;
+              line-height: bmd.$mdb-btn-fab-size-lg;
+          }
+      }
+
+      .material-icons,
+      .fa {
+        margin-top: 0;
+        position: absolute;
+        width: 100%;
+        transform: none;
+        left: 0;
+        top: 0;
+        height: 100%;
+
+        line-height: bmd.$mdb-btn-fab-size;
+        font-size: bmd.$mdb-btn-just-icon-font-size;
+      }
+  }
+}
+
+.btn-just-icon{
+    &.btn-lg{
+        font-size: bmd.$mdb-btn-fab-font-size;
+        height: bmd.$mdb-btn-fab-size;
+        min-width: bmd.$mdb-btn-fab-size;
+        width: bmd.$mdb-btn-fab-size;
+    }
+}
+
+.input-group-btn > .btn{
+    border: 0;
+}
+
+
+// Align icons inside buttons with text
+.btn .material-icons,
+.btn:not(.btn-just-icon):not(.btn-fab) .fa{
+      position: relative;
+      display: inline-block;
+      top: 0;
+      margin-top: -1em;
+      margin-bottom: -1em;
+      font-size: 1.1rem;
+      vertical-align: middle;
+    }
+
+// Disabled buttons and button groups
+.mat-raised-button.btn,
+.input-group-btn .mat-raised-button.btn,
+.btn-group,
+.btn-group-vertical {
+  // have to ratchet up the specificity to kill drop shadows on disabled raised buttons
+  @include mixforms.bmd-disabled() {
+    .bg-inverse & {
+      color: buttons.$bmd-inverse-btn-disabled;
+    }
+
+    // flat buttons shouldn't lose transparency on disabled hover/focus
+  }
+}
+
+// btn-group variations
+.btn-group,
+.btn-group-vertical {
+  position: relative;
+  margin: 10px 1px;
+
+  // spec: https://www.google.com/design/spec/components/buttons.html#buttons-toggle-buttons
+  //&.open {
+  //  .dropdown-toggle {
+  //  }
+  //
+  //  > .dropdown-toggle.btn {
+  //    @include bmd-raised-button-color-bg();
+  //  }
+  //}
+
+  .dropdown-menu {
+    border-radius: 0 0 $border-radius-sm $border-radius-sm;
+  }
+
+  &.btn-group-raised {
+    @include mixprefixes.box-shadow(shadow.$bmd-shadow-2dp);
+  }
+
+  .mat-raised-button.btn + .mat-raised-button.btn,
+  .mat-raised-button.btn,
+  .mat-raised-button.btn:active,
+  .btn-group {
+    margin: 0;
+  }
+
+  // remove margin from nested btn-group(s) to properly align them with the outer buttons
+  > .btn-group {
+    margin: 0;
+  }
+
+}
+.btn-group > .mat-raised-button.btn:not(:first-child), .btn-group > .btn-group:not(:first-child) > .mat-raised-button.btn,
+
+.btn-group > .mat-raised-button.btn:not(:first-child) .mat-button-ripple, .btn-group > .btn-group:not(:first-child) > .mat-raised-button.btn .mat-button-ripple,
+
+.btn-group > .mat-raised-button.btn:not(:first-child) .mat-button-focus-overlay, .btn-group > .btn-group:not(:first-child) > .mat-raised-button.btn .mat-button-focus-overlay{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.btn-group > .mat-raised-button.btn:not(:last-child):not(.dropdown-toggle), .btn-group > .btn-group:not(:last-child) > .mat-raised-button.btn,
+.btn-group > .mat-raised-button.btn:not(:last-child):not(.dropdown-toggle) .mat-button-ripple, .btn-group > .btn-group:not(:last-child) > .mat-raised-button.btn .mat-button-ripple,
+.btn-group > .mat-raised-button.btn:not(:last-child):not(.dropdown-toggle) .mat-button-focus-overlay, .btn-group > .btn-group:not(:last-child) > .mat-raised-button.btn .mat-button-focus-overlay {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.btn-no-ripple .mat-button-ripple{
+  display: none;
+}
+.mat-button, .mat-icon-button {
+    background: transparent;
+}
+.mat-button:hover .mat-button-focus-overlay, .mat-stroked-button:hover .mat-button-focus-overlay{
+  opacity: 0;
+  background-color: transparent!important;
+}
+button:focus {
+  outline: none;
+}
+.mat-button .mat-button-ripple{
+  border-radius: inherit;
+}

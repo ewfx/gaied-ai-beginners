@@ -1,0 +1,42 @@
+
+ @use "core/variables";
+ @use "core/mixins";
+ @use "bootstrap/scss/bootstrap";
+
+
+ // Core Components
+ @use "core/buttons";
+ @use "core/checkboxes";
+ @use "core/radios";
+ @use "core/forms";
+ @use "core/images";
+ @use "core/navbar";
+//  @use "core/alerts";
+//  @use "core/type";
+//  @use "core/tabs";
+//  @use "core/tooltip";
+//  @use "core/popover";
+//  @use "core/dropdown";
+//  @use "core/togglebutton";
+//  @use "core/ripples";
+//  @use "core/footers";
+ @use "core/sidebar-and-main-panel";
+ @use "core/fixed-plugin";
+ @use "core/tables";
+//  @use "core/misc";
+
+@use "core/cards";
+@use "core/cards/card-stats";
+@use "core/cards/card-profile";
+@use "core/cards/card-plain";
+
+ //plugin scss
+ @use "core/plugins/animate";
+ @use "core/plugins/chartist";
+ @use "core/plugins/perfect-scrollbar";
+
+ @use "core/responsive";
+
+@use "core/angular-modal.scss";
+
+@import "../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";

@@ -1,28 +1,4 @@
 
-<div class="container">
-  <h1>Email Classification</h1>
-  <form (ngSubmit)="classifyEmail()">
-    <div>
-      <label for="prompt">Prompt:</label>
-      <textarea
-        id="prompt"
-        [(ngModel)]="prompt"
-        name="prompt"
-        rows="5"
-        cols="50"
-        required
-      ></textarea>
-    </div>
-    <div>
-      <button type="submit" [disabled]="isLoading">
-        {{ isLoading ? 'Classifying...' : 'Classify' }}
-      </button>
-    </div>
-  </form>
-  <div *ngIf="response" class="response">
-    <h2>Response:</h2>
-    <p>{{ response }}</p>
-  </div>
-</div>
+<router-outlet></router-outlet>
 
-<router-outlet />
+

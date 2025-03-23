@@ -1,0 +1,36 @@
+@use "../core/variables/colors";
+@use "../core/variables/shadow";
+
+
+@use "variables/bootstrap-material-design-base";
+
+// Customized BS variables
+@use "variables/custom-forms";
+@use "variables/spacing";
+@use "../core/variables/body";
+@use "variables/brand";
+@use "variables/buttons";
+@use "variables/card";
+@use "variables/code";
+@use "variables/dropdown";
+@use "variables/forms";
+@use "variables/list-group";
+@use "variables/nav";
+@use "variables/pagination";
+@use "variables/state";
+@use "variables/tables";
+@use "variables/tooltip";
+@use "variables/type";
+@use "variables/modals";
+
+// import their vars after customization for use below
+$enable-flex: true; // fully adopt flexbox layouts
+$enable-shadows: true; // enable shadows, set to false to turn off shadows
+
+
+@use "variables/layout";
+@use "variables/menu";
+@use "variables/drawer";
+@use "variables/snackbar";
+
+@use "variables/bootstrap-material-design";
