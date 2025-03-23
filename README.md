@@ -105,23 +105,23 @@ Technical Challenges & Solutions
 1. Extracting Text from Various Attachments
    -	Issue: Different file formats (PDF, DOCX, images) require different extraction methods.
    -	Solution:
-      -	Used pdfplumber for structured PDFs and python-docx for Word files.
-      -	Applied OCR (pytesseract) with image preprocessing (grayscale + contrast) for scanned documents.
+       -	Used pdfplumber for structured PDFs and python-docx for Word files.
+       -	Applied OCR (pytesseract) with image preprocessing (grayscale + contrast) for scanned documents.
 2. Handling Unstructured Email Content
    -	Issue: Emails contain a mix of HTML, plain text, and inline elements, making extraction tricky.
    -	Solution:
-      -	Parsed email parts using email.policy.default.
-      -	Converted HTML to text while filtering out signatures and disclaimers with regex.
+       -	Parsed email parts using email.policy.default.
+       -	Converted HTML to text while filtering out signatures and disclaimers with regex.
 3. Improving Email Classification Accuracy
    -	Issue: Simple keyword matching led to incorrect classification.
    -	Solution:
-      -	Used TF-IDF scoring to weigh keywords more effectively.
-      -	Future enhancement: NLP-based AI model for contextual understanding.
+       -	Used TF-IDF scoring to weigh keywords more effectively.
+       -	Future enhancement: NLP-based AI model for contextual understanding.
 4. Processing Large Volumes Efficiently
    -	Issue: High email volume caused slow processing due to I/O bottlenecks.
    -	Solution:
-      -	Implemented batch processing and asynchronous file handling.
-      -	Streamed large attachments instead of loading them into memory.
+       -	Implemented batch processing and asynchronous file handling.
+       -	Streamed large attachments instead of loading them into memory.
 ________________________________________
 Non-Technical Challenges
 1. Data Privacy & Security
