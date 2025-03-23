@@ -55,6 +55,59 @@ Managing emails manually can be time-consuming, especially for organizations dea
 ## ⚙️ What It Does
 Explain the key features and functionalities of your project.
 
+Here’s a detailed explanation of the key features and functionalities of your email processing solution:
+
+Key Features and Functionalities:
+1. AI-Powered Email Classification
+Uses Gen AI to analyze and categorize emails based on their subject and content includes attachements.
+
+Identifies common request types such as Adjustment, AU Transfer, Closing Notice etc using keyword-based matching.
+
+2. OCR (Optical Character Recognition) for Attachments
+Extracts text from PDF, DOCX, and image files attached to emails.
+
+Uses pytesseract for OCR-based text extraction from images.
+
+Enhances images for better OCR accuracy by increasing contrast and converting them to grayscale.
+
+3. Multi-Format Email Attachment Processing
+Supports multiple file types, including:
+
+Text-based files (TXT, CSV, JSON)
+
+Document files (DOCX, PDF)
+
+Images (JPG, PNG)
+
+Extracts and stores the extracted text for further analysis.
+
+4. Email Parsing and Metadata Extraction
+Reads emails from .eml files.
+
+Extracts critical metadata such as:
+
+Sender, Recipient, Subject, and Date.
+
+Processes both plain text and HTML email bodies.
+
+5. Intelligent Content Classification
+Analyzes the subject line and email body to determine the category of the request.
+
+Uses a keyword-based matching algorithm to assign a percentage match to each request type.
+
+6. Automated Email Processing
+Scans an entire folder of emails (.eml files).
+
+Saves extracted data and classification results as structured JSON files.
+
+Enables bulk email processing for enterprise use cases.
+
+7. Secure Attachment Handling
+Saves attachments securely in a specified directory.
+
+Ensures unsupported file types are not processed.
+This system is designed to automate email processing, improve efficiency in handling customer queries, and enable businesses to respond faster to critical requests.
+
 ## 🛠️ How We Built It
 Briefly outline the technologies, frameworks, and tools used in development.
 
