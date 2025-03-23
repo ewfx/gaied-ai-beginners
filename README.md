@@ -98,6 +98,26 @@ This system is designed to automate email processing, improve efficiency in hand
 ## 🛠️ How We Built It
 Briefly outline the technologies, frameworks, and tools used in development.
 
+Technologies & Tools Used
+1.	Programming Language
+    - #Python# – Core development language for email processing, text extraction, and classification.
+2.	Email Processing
+    -	#email.policy, email.parser# – To parse and process email content and attachments.
+3.	Text Extraction & OCR
+    - pdfplumber – Extracts text from PDFs with structured layout handling.
+    - python-docx – Reads and extracts content from Word documents (.docx).
+    - pytesseract – Optical Character Recognition (OCR) for extracting text from images.
+    - Pillow (PIL) – Image preprocessing (grayscale conversion, contrast enhancement).
+4.	Data Handling & Storage
+    - json – Stores extracted email content in structured format.
+    - os – Manages file system operations (saving attachments, creating directories).
+5.	Classification & NLP Techniques
+    - Regex & String Matching – Identifies keywords for email classification.
+    - TF-IDF (Future Enhancement) – Improves classification accuracy with better text understanding.
+6.	Execution & Environment Management
+    - Virtual Environments (venv) – Ensures dependency consistency across different setups.
+    - Requirements.txt – Manages dependencies for easy deployment.
+
 ## 🚧 Challenges We Faced
 Describe the major technical or non-technical challenges your team encountered.
 
