@@ -176,7 +176,9 @@ Non-Technical Challenges
 - 🔹 Other: OpenAI API 
 
 ## 👥 Team
+
 - **Kannan K**      - [GitHub](https://github.com/uk2nk) | [LinkedIn](https://www.linkedin.com/in/kannan-krishnan-a7693b61/)
 - **Udhayakumar G** - [GitHub](https://github.com/udhayakumar-g) | [LinkedIn](https://www.linkedin.com/in/udhaya-kumar-dot-net-dev/)
 - **Manimaran M**   - [GitHub](https://github.com/Manimaran-Learning) | [LinkedIn](https://www.linkedin.com/in/manimaran-manivannan-02714947/)
 - **Yogesh H**      - [GitHub] | [LinkedIn](https://www.linkedin.com/in/yogesh-hari-02ba1b57/)
+
