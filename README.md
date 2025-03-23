@@ -48,6 +48,10 @@ This solution aims to streamline workflows, reduce manual effort, and improve de
 ## 💡 Inspiration
 What inspired you to create this project? Describe the problem you're solving.
 
+The idea for this project was inspired by the increasing need for smarter email management in today’s fast-paced digital world. Many organizations struggle with email overload, making it difficult to keep track of important communications and prioritize responses effectively. Manual sorting and rule-based filters often fail to adapt to evolving business needs and unstructured content within emails and attachments. By leveraging AI-driven automation, we aim to redefine email organization and ensure that users can focus on high-priority tasks. 
+
+Managing emails manually can be time-consuming, especially for organizations dealing with a high volume of messages. Existing rule-based filters often fall short when handling unstructured email content, attachments, and context-based prioritization. As businesses grow, the need for a more efficient, AI-driven email classification system becomes critical. Our goal is to build a solution that automates email categorization, understands context, and helps users focus on important tasks without being buried under an overwhelming inbox.
+
 ## ⚙️ What It Does
 Explain the key features and functionalities of your project.
 
