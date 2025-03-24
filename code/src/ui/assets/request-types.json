@@ -1,0 +1,16 @@
+{
+  "CommercialBankLendingService": {
+    "RequestTypes": [
+      {
+        "type": "Loan Application",
+        "subRequestTypes": [
+          "Personal Loan Application",
+          "Business Loan Application",
+          "Home Loan Application",
+          "Auto Loan Application",
+          "Student Loan Application"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+<div class="container mt-4">
+    <h2 class="text-center">Request Types</h2>
+  
+    <!-- Add Request Type -->
+    <div class="card p-3 mb-4 shadow-sm">
+      <h4>Add New Request Type</h4>
+      <div class="row">
+        <div class="col-md-5">
+          <input type="text" [(ngModel)]="newRequestType.type" class="form-control" placeholder="Request Type">
+        </div>
+        <div class="col-md-5">
+          <input type="text" [(ngModel)]="newRequestType.subRequestTypes" class="form-control" placeholder="SubRequestTypes (comma-separated)">
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary w-100" (click)="addRequestType()">Add</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- List Request Types -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Request Type</th>
+            <th>SubRequest Types</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of requestTypes">
+            <td><strong>{{ request.type }}</strong></td>
+            <td>{{ request.subRequestTypes?.join(', ') }}</td>
+            <td class="text-center">
+              <button class="btn btn-warning btn-sm me-2" (click)="editRequestType(request)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteRequestType(request.type)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  <!-- Edit Request Type -->
+<div *ngIf="selectedRequestType" class="card p-3 mt-4 shadow-sm">
+    <h4>Edit Request Type</h4>
+    <div class="row">
+      <div class="col-md-5">
+        <input type="text" [(ngModel)]="selectedRequestType.type" class="form-control">
+      </div>
+      <div class="col-md-5">
+        <input type="text" 
+               [(ngModel)]="subRequestTypeString" 
+               (input)="updateSubtypeList()" 
+               class="form-control">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-success w-100" (click)="updateRequestType()">Update</button>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  
