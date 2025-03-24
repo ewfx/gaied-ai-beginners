@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from aimain import get_classify,classify_content,process_and_classify_emails
+from requesttypes_app import router as requesttypes_router
+from prioritizationrules_app import router as prioritizationrules_router
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -16,20 +18,11 @@ app.add_middleware(
 # Define request body schema
 class ChatRequest(BaseModel):
     prompt: str
-    model: str = "gpt-4o-mini"
 
 @app.get("/")
 def root():
     return {"response": "Welcome to the Gen AI API!"}
 
-@app.post("/classify/")
-async def chat_completion(request: ChatRequest):
-    try:
-        response = get_classify(prompt=request.prompt, model=request.model)
-        return {"response": response}
-    except Exception as e:
-        print(e)
-        raise HTTPException(status_code=500, detail=str(e))
     
 @app.get("/process_and_classify_emails")
 async def process_and_classify_emails_endpoint():
@@ -40,12 +33,6 @@ async def process_and_classify_emails_endpoint():
         print(e)
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/classify-content/{prompt}")
-async def classify_content_endpoint(prompt: str, model: str = "gpt-4o-mini"):
-    try:
-        prompt = "I need help with my loan application status."
-        response = classify_content(prompt=prompt, model=model)
-        return {"response": response}
-    except Exception as e:
-        print(e)
-        raise HTTPException(status_code=500, detail=str(e))
+# Include the routers
+app.include_router(requesttypes_router, prefix="/request-types", tags=["Request Types"])
+app.include_router(prioritizationrules_router, prefix="/prioritization-rules", tags=["Prioritization Rules"])
