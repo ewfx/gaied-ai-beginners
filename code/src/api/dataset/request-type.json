@@ -66,10 +66,7 @@
       {
         "type": "Adjustment",
         "subRequestTypes": [
-          "Account Adjustment Request",
-          "Interest Rate Adjustment",
-          "Principal Adjustment",
-          "Repayment Plan Adjustment"
+          
         ]
       },
       {
@@ -84,14 +81,20 @@
         "subRequestTypes": [
           "Loan Account Closing Notice",
           "Pre-Closing Loan Notice",
-          "Final Loan Settlement Notice"
+          "Final Loan Settlement Notice",
+          "Reallocation Fees",
+          "Amendment Fees",
+          "Reallocation Principal"
         ]
       },
       {
         "type": "Commitment Change",
         "subRequestTypes": [
           "Change in Loan Commitment",
-          "Amendment of Loan Commitment Terms"
+          "Amendment of Loan Commitment Terms",
+          "Cashless Roll",
+          "Decrease",
+          "Increase"
         ]
       },
       {
@@ -100,30 +103,120 @@
           "Loan Processing Fee Payment",
           "Late Payment Fee Payment",
           "Prepayment Fee Payment",
-          "Service Fee Payment"
+          "Service Fee Payment",
+          "Ongoing Fee Payment",
+          "Letter of Credit Fee Payment"
         ]
       },
       {
-        "type": "Money Movement",
-        "subRequestTypes": [
-          {
-            "type": "Inbound",
-            "subRequestTypes": [
+        "type": "Money Movement-Inbound",
+        "subRequestTypes": [          
               "Inbound Loan Payment",
               "Inbound Transfer from Another Bank",
-              "Inbound Payment from Borrower"
+              "Inbound Payment from Borrower",
+              "Principal",
+              "Interest",
+              "Principal+Interest",
+              "Principal+Interest+Fee"
             ]
           },
           {
-            "type": "Outbound",
+            "type": "Money Movement-Outbound",
             "subRequestTypes": [
               "Outbound Loan Disbursement",
               "Outbound Transfer to Borrower",
-              "Outbound Transfer to Another Bank"
+              "Outbound Transfer to Another Bank",
+              "Timebound",
+              "Foreign Currency"
             ]
-          }
-        ]
+          },
+        {
+              "type": "Escrow Management",
+              "subRequestTypes": [
+                "Escrow Account Setup",
+                "Escrow Payment Inquiry",
+                "Escrow Balance Adjustment",
+                "Escrow Disbursement Request",
+                "Tax and Insurance Payment Inquiry"
+              ]
+            },
+            {
+              "type": "Collateral Management",
+              "subRequestTypes": [
+                "Collateral Release Request",
+                "Collateral Substitution",
+                "Collateral Valuation Inquiry",
+                "Collateral Documentation Request"
+              ]
+            },
+            {
+              "type": "Dispute Resolution",
+              "subRequestTypes": [
+                "Payment Dispute",
+                "Account Balance Dispute",
+                "Loan Terms Dispute",
+                "Escrow Dispute"
+              ]
+            },
+            {
+              "type": "Tax and Insurance",
+              "subRequestTypes": [
+                "Tax Payment Inquiry",
+                "Insurance Payment Inquiry",
+                "Tax Document Request",
+                "Insurance Policy Update"
+              ]
+            },
+            {
+              "type": "Customer Communication",
+              "subRequestTypes": [
+                "Notification Preferences Update",
+                "Loan Servicing Updates",
+                "Communication History Request"
+              ]
+            },
+            {
+              "type": "Regulatory Compliance",
+              "subRequestTypes": [
+                "Compliance Certificate Request",
+                "Regulatory Reporting Inquiry",
+                "Audit Request",
+                "KYC (Know Your Customer) Update"
+              ]
+            },
+            {
+              "type": "Loan Servicing Reports",
+              "subRequestTypes": [
+                "Loan Performance Report",
+                "Payment History Report",
+                "Escrow Account Report",
+                "Loan Portfolio Summary"
+              ]
+            },
+            {
+              "type": "Fraud Investigation",
+              "subRequestTypes": [
+                "Fraudulent Payment Investigation",
+                "Unauthorized Account Access Inquiry",
+                "Fraudulent Loan Application Report"
+              ]
+            },
+            {
+              "type": "Payment Plan Setup",
+              "subRequestTypes": [
+                "New Payment Plan Setup",
+                "Payment Plan Modification",
+                "Payment Plan Cancellation"
+              ]
+            },
+            {
+              "type": "Loan Servicing Termination",
+              "subRequestTypes": [
+                "Termination of Servicing Agreement",
+                "Transfer of Servicing to Another Agency",
+                "Final Servicing Report Request"
+              ]
+            }
+          ]
+        }
       }
-    ]
-  }
-}

@@ -61,57 +61,59 @@ def read_msg_file(file_path):
     """
     Reads a .msg file and extracts its content.
     """
-    msg = extract_msg.Message(file_path)
-
-    email_content = {
-        "subject": msg.subject,
-        "from": msg.sender,
-        "to": msg.to,
-        "date": msg.date,
-        "body": msg.body if msg.body else msg.htmlBody,
-        "attachments": []
-    }
-    
-    # Extract attachments
-    for attachment in msg.attachments:
-               
-        attachment_info = {
-            "filename": attachment.longFilename or attachment.shortFilename,
-            "size": len(attachment.data),
-            "content": attachment.data
+    msg = extract_msg.Message(file_path)  # Open the .msg file
+    try:
+        email_content = {
+            "subject": msg.subject,
+            "from": msg.sender,
+            "to": msg.to,
+            "date": msg.date,
+            "body": msg.body if msg.body else msg.htmlBody,
+            "attachments": []
         }
-        filename = attachment_info["filename"]
-        if filename:
+        
+        # Extract attachments
+        for attachment in msg.attachments:
+            attachment_info = {
+                "filename": attachment.longFilename or attachment.shortFilename,
+                "size": len(attachment.data),
+                "content": attachment.data
+            }
+            filename = attachment_info["filename"]
+            if filename:
                 # Get the file extension
-            _, file_extension = os.path.splitext(filename)
+                _, file_extension = os.path.splitext(filename)
 
                 # Read the content of the attachment
-            attachment_content = attachment_info["content"]
-            content_type, _ = mimetypes.guess_type(filename)
+                attachment_content = attachment_info["content"]
+                content_type, _ = mimetypes.guess_type(filename)
+
                 # Process the attachment content if it's a supported file type
-            try:
-                extracted_content = read_document(attachment_content, file_extension)
-            except ValueError as e:
-                extracted_content = f"Error processing attachment: {e}"
+                try:
+                    extracted_content = read_document(attachment_content, file_extension)
+                except ValueError as e:
+                    extracted_content = f"Error processing attachment: {e}"
 
                 # Add attachment details to the email content
-            attachment = {
+                attachment = {
                     "filename": filename,
                     "content_type": content_type,
                     "size": len(attachment_content),
                     "file_extension": file_extension,
                     "content": extracted_content
-            }
-            email_content["attachments"].append(attachment)
-            
-    email_content["classify_content"] = json.dumps({
-        "subject": email_content["subject"],
-        "body": email_content["body"].decode(),
-        "attachments": email_content["attachments"]
-    })
+                }
+                email_content["attachments"].append(attachment)
+        
+        email_content["classify_content"] = json.dumps({
+            "subject": email_content["subject"],
+            "body": email_content["body"].decode() if isinstance(email_content["body"], bytes) else email_content["body"],
+            "attachments": email_content["attachments"]
+        })
 
-    return email_content
-
+        return email_content
+    finally:
+        # Ensure the .msg file is closed
+        msg.close()
 
 def convert_email_to_json(file_path):
     """
@@ -130,7 +132,7 @@ def convert_email_to_json(file_path):
 
 # Example usage
 if __name__ == "__main__":
-    file_path = "Loan Agency Services - request.msg"  
+    file_path = "ABC Bank share adjustment.eml"  
     try:
         current_dir = os.path.dirname(os.path.abspath(__file__))
         email_path = os.path.abspath(os.path.join(current_dir, "..", "mail_dropbox", "unread", file_path))

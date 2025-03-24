@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import os
 import json
 import re
+import time
+from trained_model import generate_reasoning, classification_Prompt
 import shutil
 from email_processor import convert_email_to_json
 # Load environment variables from .env file
@@ -10,7 +12,7 @@ load_dotenv()
 
 # Set your OpenAI API key
 openai.api_key = os.getenv("OPENAI_API_KEY")
-model = "gpt-4o-mini";
+model = os.getenv("OPENAI_MODEL")
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 json_file_path = "".join([current_dir, "\\dataset\\request-type.json"])
@@ -37,7 +39,7 @@ def remove_python_cache():
                 os.remove(pyc_file)
 
 
-def get_classify(prompt, model="gpt-4o-mini"):
+def get_classify(prompt):
    
     try:
         completion = openai.ChatCompletion.create(
@@ -64,26 +66,23 @@ def process_and_classify_emails():
         email_results = []
         for email_file in email_files:
             email_content = convert_email_to_json(email_file)
-            updated_email_content = ""
-            if "classify_content" in email_content:
-                updated_email_content = re.sub(r"[^a-zA-Z0-9\s]", "", email_content["classify_content"])
-                                  
-            classification = classify_content(updated_email_content, model=model)
+                                
+            classification = classify_content(email_content["classify_content"])
             classification["email_subject"] = email_content["subject"]
             email_results.append(classification)
-
+            add_to_classified_mail(email_content)
         # Move processed files to the 'processed' folder
         current_dir = os.path.dirname(os.path.abspath(__file__))
         source_folder = os.path.abspath(os.path.join(current_dir, "..", "mail_dropbox", "unread"))
         destination_folder = os.path.abspath(os.path.join(current_dir, "..", "mail_dropbox", "processed"))
         move_read_files(source_folder, destination_folder,file_names)
-    
+        
         return email_results
 
     except Exception as e:
         return f"Error: {e}"
 
-def classify_content(prompt, model="gpt-4o-mini"):
+def classify_content(prompt):
     try:
         # Function to process nested sub-request types
         def process_sub_request_types(sub_request_types):
@@ -103,30 +102,8 @@ def classify_content(prompt, model="gpt-4o-mini"):
 
         
         # Define the prompt for classification
-        classification_prompt = f"""
-        You are a classification assistant. Analyze the following content and classify it into:
-        - Request Type
-        - Request Subtype
-        - Confidence Score
-        possible request types and subtypes.
-        Based on the following possible request types and subtypes:
-        {request_types_str}
-
-        Content: "{prompt}"
-
-        Respond in the following JSON format:
-        {{
-            "Request": [
-                {{
-                    "request_type": "<type>",
-                    "request_subtype": "<subtype>",
-                    "confidence_score": <score>,
-                    "reasoning": "<reasoning>"
-                }}
-            ]            
-        }}
-        """
-
+        classification_prompt = classification_Prompt(prompt,request_types_str) 
+        
         # Call OpenAI's ChatCompletion API
         completion = openai.ChatCompletion.create(
             model=model,
@@ -142,9 +119,12 @@ def classify_content(prompt, model="gpt-4o-mini"):
 
         # Convert the cleaned string to a JSON object
         result = json.loads(cleaned_result)
-        for request in result["Request"]:
-            request["confidence_score"] = float(request["confidence_score"])*100
-            
+        # Add detailed reasoning for each request
+        for request in result["Request"]:            
+            # Convert confidence score to percentage
+            request["confidence_score"] = float(request["confidence_score"])
+           
+        
         return result
 
     except Exception as e:
@@ -188,8 +168,7 @@ def move_read_files(source_folder, destination_folder, file_names):
             destination_file = os.path.join(destination_folder, file_name)
 
             if os.path.exists(source_file):
-                shutil.move(source_file, destination_file)
-                print(f"Moved file: {source_file} -> {destination_file}")
+                move_file_with_retry(source_file, destination_file)               
             else:
                 print(f"File not found: {source_file}")
 
@@ -197,6 +176,52 @@ def move_read_files(source_folder, destination_folder, file_names):
 
     except Exception as e:
         return f"Error while moving files: {e}"
+
+def move_file_with_retry(source_file, destination_file, retries=3, delay=2):
+    for attempt in range(retries):
+        try:
+            shutil.move(source_file, destination_file)
+            print(f"Moved file: {source_file} -> {destination_file}")
+            return
+        except Exception as e:
+            print(f"Attempt {attempt + 1} failed: {e}")
+            time.sleep(delay)
+    print(f"Failed to move file after {retries} attempts: {source_file}")
+
+def add_to_classified_mail(email_content):
+    """
+    Adds the email content to the classified_mail.json file.
+    :param email_content: The email content to add.
+    :param json_file_path: Path to the classified_mail.json file.
+    """
+    try:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        json_file_path = os.path.join(current_dir,"dataset","db_data","classified_mail.json")
+
+        # Check if the JSON file exists
+        if os.path.exists(json_file_path):
+            # Load existing data
+            with open(json_file_path, "r") as file:
+                data = json.load(file)
+        else:
+            # Initialize an empty list if the file does not exist
+            data = []
+
+        # Append the new email content
+        data.append(email_content)
+
+        # Write the updated data back to the file
+        with open(json_file_path, "w") as file:
+            json.dump(data, file, indent=4)
+
+        print(f"Email content added to {json_file_path}")
+        return f"Email content successfully added to {json_file_path}."
+
+    except Exception as e:
+        return f"Error while adding email content to {json_file_path}: {e}"
+
+
+
 # Example usage
 if __name__ == "__main__":
     prompt = "how to read emails from outlook?"

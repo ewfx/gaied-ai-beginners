@@ -1,0 +1,311 @@
+Received: from TYVPR01MB10781.jpnprd01.prod.outlook.com
+ (2603:1096:400:2ae::14) by TYWPR01MB11963.jpnprd01.prod.outlook.com with
+ HTTPS; Mon, 24 Mar 2025 08:03:59 +0000
+Received: from PA7P264CA0035.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:34b::18)
+ by TYVPR01MB10781.jpnprd01.prod.outlook.com (2603:1096:400:2ae::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8534.42; Mon, 24 Mar
+ 2025 08:03:57 +0000
+Received: from AM3PEPF0000A794.eurprd04.prod.outlook.com
+ (2603:10a6:102:34b:cafe::a9) by PA7P264CA0035.outlook.office365.com
+ (2603:10a6:102:34b::18) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.42 via Frontend Transport; Mon,
+ 24 Mar 2025 08:03:34 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.161.42)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 209.85.161.42 as permitted sender) receiver=protection.outlook.com;
+ client-ip=209.85.161.42; helo=mail-oo1-f42.google.com; pr=C
+Received: from mail-oo1-f42.google.com (209.85.161.42) by
+ AM3PEPF0000A794.mail.protection.outlook.com (10.167.16.123) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.20
+ via Frontend Transport; Mon, 24 Mar 2025 08:03:34 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:29607033DEC6B8FCE0653BE428AF14D88998885BADB467737703411492DA9879;UpperCasedChecksum:457DA2EFB6779D5BA9EF6463BEA99286077E9E0C77D58F1DE6B25F81389F1775;SizeAsReceived:2697;Count:15
+Received: by mail-oo1-f42.google.com with SMTP id 006d021491bc7-601ad30bc0cso3267505eaf.0
+        for <aibeg_finance@hotmail.com>; Mon, 24 Mar 2025 01:03:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742803414; x=1743408214; darn=hotmail.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=iAmnQtxslLVP2QldZTD3LpniCo74p2Y22xnM+vAsiUM=;
+        b=IxWiKR7m9Dw7+3Mxioy2XQmTx/9Mw7iS6yYXJW+c6rxxjfHeTAW55AGFYR+esPLY+I
+         hJGd86iPRXjc1cl+XWRsHEv1HmEWvF/9eAufl2Y88kM+YWJvlyfRPmFXcBgSnfRErFAb
+         MpJYjrINjB2WHIMvgr85F4SUCwedVHcxJ4cAhAaHNMMSz6SPiSyyxVhx0T6/p4LEOUyB
+         uEqceHkYNCeCNgSO0gUV+57GAcocmC7QQKXkzVlBkyNgLm6LApIJ9c9Qdwjvaaxl5z4L
+         DzEbCAHsXC+ydJdpAOXqwnWPpoHX0dWBIZni0l9dLu2v+8UIC1BvOUBJFCWBbflRwkPO
+         LGaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742803414; x=1743408214;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=iAmnQtxslLVP2QldZTD3LpniCo74p2Y22xnM+vAsiUM=;
+        b=RdV62Cxtxi8Nzs75RJr5P5/yQ5ShAK4kUX0Yq+n7GkEzzLD+LkbKIaJmgDQBjaKFqR
+         JUr1noALdyH45eanSGkcukKjlwUpNkOeIfNyK3S970dAIE5lSoaZhG9DHi0R7ZGotXUu
+         qJ77IFFgiKkW4vIOZNPBxdnhJG3h58katnSZ4UXrhfdBGU3ij5BwiDL+0rfS9nfsqJY9
+         vZmsShWCwJY2g/oSOf/8jhoeqhWShRBeblEQqBV3Pse5rzulDIkH7Y1OItdyVvesEDPh
+         mc1AV0hoPbsS9mrlSevG+DQq8pCmkj6yRexPKMmT80eJ59lu55qPKuigt2tE43NWDwt5
+         F61w==
+X-Gm-Message-State: AOJu0YxuZAfulfadcp5GYY7tFJY3Wj3vBljnBKtmE1ESasCZQfTybkUD
+	W1K6oCFloh4u9Ghn6bU3snV0GJ4MQniyET3XB75Kls98/CjX43P8FCrHNvj1zxaBpehE3gISOXn
+	o1zOqNBT7p4SKGMGbZlg20g8Uu6NoqCyU
+X-Gm-Gg: ASbGncs9TEsJf7gKXjIHVP3pABQmOtIDgYfvE2iQ0h8zSB2NbcGtGWfVvXxv2xMNVz9
+	Srcqjfogl4rAqDeJUcWIoVdjrErMp6yHpRllhwIwRxYDGfwTzm1JlGvBGbP084amL5/k3YIc1nP
+	LiWVXdbKe5gfyXjNY8EPsA2rfU1URHCL/+rOy4tw==
+X-Google-Smtp-Source: AGHT+IHn7FcqySfCAsJfYdBx46MWQfm1rARPbHwsHZNkkERxgUokeRWdQLBnL7xxM2d3MEyH8sacP6q/YILP7X8datA=
+X-Received: by 2002:a05:6808:3505:b0:3f6:a851:fe56 with SMTP id
+ 5614622812f47-3feb46a20femr9576171b6e.12.1742803413630; Mon, 24 Mar 2025
+ 01:03:33 -0700 (PDT)
+From: Kannan Krishnan <kannaa.krishnaa@gmail.com>
+Date: Mon, 24 Mar 2025 13:33:22 +0530
+X-Gm-Features: AQ5f1JpO4xZYYqlNayr7NQDnRFxKad1x9I_9JxxjtbAS2xYVDjFruOqF5vhbS4w
+Message-ID: <CAJB-KrNLCyYunYPwsN4p=movrf2CLiVfHk4OwXAmFRfBgHsd8w@mail.gmail.com>
+Subject: ABC Bank share adjustment
+To: aibeg_finance@hotmail.com
+Content-Type: multipart/mixed; boundary="0000000000006228b50631120ae6"
+X-IncomingHeaderCount: 15
+Return-Path: kannaa.krishnaa@gmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 24 Mar 2025 08:03:34.7783
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: 2f3ee4e3-efc8-44a9-91cd-08dd6aaa6038
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM3PEPF0000A794:EE_|TYVPR01MB10781:EE_|TYWPR01MB11963:EE_
+X-MS-Exchange-Organization-AuthSource: AM3PEPF0000A794.eurprd04.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 3/24/2025 8:03:55 AM
+X-MS-Office365-Filtering-Correlation-Id: 2f3ee4e3-efc8-44a9-91cd-08dd6aaa6038
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 209.85.161.42
+X-SID-PRA: KANNAA.KRISHNAA@GMAIL.COM
+X-SID-Result: PASS
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:1444111002|2100799027|9020799016|13020799006|58200799018|461199028|47200799021|6092099012|440099028|3412199025|1360799030|1370799030|1380799030|7002799012;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Mar 2025 08:03:34.6533
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2f3ee4e3-efc8-44a9-91cd-08dd6aaa6038
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: AM3PEPF0000A794.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYVPR01MB10781
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:24.9222007
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8534.033
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000308)(920221119095)(90000117)(920221120095)(90010023)(91010020)(91040095)(9050020)(9100341)(944500132)(4810010)(4910033)(9575002)(10195002)(9320005)(120001);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?SCswbERFTmlTUmo5V0gxRTNTenlDL0RXYStyMTg4a3pHQTRJcjBjeE9ITzRm?=
+ =?utf-8?B?Y2xpOEpDUEthc25vQk4rMC9yNE5uZVZPeTlzYS9KOE5lYVYyNVBkNGVIZEoz?=
+ =?utf-8?B?RnRrVEtyQzBjY2VUNTJtUUttREN2aUdFWngwZGN4V3lKQVJzbSt3OHdQeURG?=
+ =?utf-8?B?NWI5elBuRytKVS8yTFVoby9GL2krOTk2c3AxMm1VbGptMWNhQ284S1JWWWRE?=
+ =?utf-8?B?dmV2ZURwZWhRRjNvLzJFNmMrZURhb09DSmNDRVZyaWMvMGl3VEQrejBhNkVT?=
+ =?utf-8?B?Y3ZzaFVheVBnL3FzZlY2V21janFUR1BzQm9Cd2dIMTN5bjUvZjFVcU5VSWVk?=
+ =?utf-8?B?RExBRXZXbENOZlg3VVdFb0VJcGp0dThOVXlDRUxiNmk0QndNVGVjcnAzTnI1?=
+ =?utf-8?B?RWxwcW1WaHUxMVBkS2RnQUR3ZlpObVJpbkZNczFNRFlmcWJDNTZ5UkdHa1VT?=
+ =?utf-8?B?ZnIrVzJsY1pWNjJpVE56SDR6cEErRng0TVhEalB4RFpXSlpCUFpud3I1SjhR?=
+ =?utf-8?B?VkhmcHhtVGNjcEtOdkdDZlRQK3BoUk5DenF5dTk0aENEYjFXK1FLei9renc0?=
+ =?utf-8?B?WmZNTHd6NmlBQTBtenFYRnovM3dMd1VvVG1ydUlTeVhWS2NzZEcvbFpmYWFh?=
+ =?utf-8?B?L1dGQkR6cE9TUVJHR1lEbGRTYkRCWGZERUFEOHdzNFJ2TXRRcTJoalBnMnQw?=
+ =?utf-8?B?SzB2NFpQd08vNDc3V0JxdFR2ZWhYalF1R09QMGFOTlVKQnhEN3ZmOGtiU0ll?=
+ =?utf-8?B?Um1TR0phUE5xR2lPcjZRSFJPa1lROEo0Y0k4cHNhLzhnbDY3NHd3eGtZcVdZ?=
+ =?utf-8?B?NWFvOVdxUWNTeFdlMFowRjJWdXFoMythRmVHL0FLL2xtbzNJTnBsU0VsR3NP?=
+ =?utf-8?B?bzhXWFpLMWdBd1J0QmhvcEl2U3h6YTdpdGtGNUV3Mi9yZ0Y5Skl2MVVSSlZu?=
+ =?utf-8?B?YzJkTGg1cUl2cUlieU1GKzgrWXNYN0VEU0J2YnhGWlRRZndpTHRueUlFeUMv?=
+ =?utf-8?B?bGk3L3ZRL3dkNElFbHgway84T3hRNWM5M1c1RmxSeHV5c3ZIakVXYUxQVXdY?=
+ =?utf-8?B?L1dZMWxHMHpxWmEvZ1dyMHhIenJ0dVlESEI2bFNPUkhHSUNkV2pyTlgvV1dV?=
+ =?utf-8?B?Q1VNVUEzTUhGQjNKOG9LekpHdXdkUkh0SFByUXprZVVlc3BxWDMwajAwNk5l?=
+ =?utf-8?B?U3crek9rODBGTlZsTVVjK1J1cmUzYTFZcWtJaXZITUxWdXd5cTc1emZnTEYx?=
+ =?utf-8?B?Smw3aUhVeXhTbkhNNVUrWUYzNGxaanArMGpHdDR0dXBrQTlES25malBucUhs?=
+ =?utf-8?B?RGZtU2VsZFFCREl1em8xSDUyVmFtcXZnQThCRGRNR1FmVGdHMk5jTnk0QTQ1?=
+ =?utf-8?B?WWU2bkEvam5EZy8rSStiejEzR1BXRkR6dU5ITDRRcENCSlB0UDNQMTNFVzVB?=
+ =?utf-8?B?aTR6YnU0TndhUkhwVnVTSTU1aEN3UVJHZ1l1UElXdUxjaDNvek5vOW5QQ05m?=
+ =?utf-8?B?Zm9rQ0pVdXhkbEpvTFN3SjcyUEl6bkN2Qm8reFJkT0lxVTRyQnM2VGVodC95?=
+ =?utf-8?B?U0twVGtJOHRVU2ZHTkErc3E1VmFYaTU4dEIxOEE4eklPZE9Bb3RuSHExUWZo?=
+ =?utf-8?B?bmh6elNyVGNZbXlnVU9TanV4VUUwcnlyYjRxWFF5Q3gwWHdmMlVCdkpnTXQy?=
+ =?utf-8?B?UEY1dTNxT3NEaGpKczkrK1NoRnV2OGZUWTRwZmt4ODhWS0Y1Q0R4RExBUlRM?=
+ =?utf-8?B?VXVPMGFvYzkxbnAwZ3RFR3BhQXFMeDlrcFVBMGluZFN1c2E5N3dXTVNKRmRq?=
+ =?utf-8?B?cTJNVWtMRGdpM2owRkFZVm51eXFvY25RdmZzZ0ZhaVczQlEycmw3eGxPYy9w?=
+ =?utf-8?B?Y2JkQjEycGFXcW9DN1dVdkk4d1lvTTJsMENmcTU5TEc3SE9MU0ZDYWh3Y1dq?=
+ =?utf-8?B?dE5zejhsTW1xS0VDcnpFTmNVK0h3K1lEcXdKWWJ6MXlod2h1T2o2eG9MRWxK?=
+ =?utf-8?B?NWF3WktPOU13R0I4dGt6S2tLUDRJeVBoZVVMSlVvYmdIb1dHZ09vUE04OTJz?=
+ =?utf-8?B?THYrb2pGcHVpRERDVnJoR2lzVytKaVZKTnRiNWw5Z3FsMWUvTExRSmVHWVJJ?=
+ =?utf-8?B?OG5QTWh2eldOWXViY2J2Y1lpQkV6d252TjhQVTVaaURIUXJsU1RDTnpmVnZI?=
+ =?utf-8?B?SEtKSXF4TzhsUW90aVovdUp4R0lHZFI4cnRQNXJYREFyNTh2cGEzZCtoTDZn?=
+ =?utf-8?B?R3kvOCtiVE5CUVRnU0JTcFNBS1prNVMzTkJxL2hycGpmYVFqOFFBYVJUWjU1?=
+ =?utf-8?B?Znh5dnljbXNHZm5MY0tIL2dxcXNkVGE2NFZDZG9KLzVZTjNsZXh0UT09?=
+MIME-Version: 1.0
+
+--0000000000006228b50631120ae6
+Content-Type: multipart/alternative; boundary="0000000000006228b30631120ae4"
+
+--0000000000006228b30631120ae4
+Content-Type: text/plain; charset="UTF-8"
+
+Hi,
+
+The current share has been increased to USD 5,542,96.55.
+
+PFA for more details
+
+
+--
+Regards,
+Kannan Krishnan
++91 850 866 8966
+
+--0000000000006228b30631120ae4
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><d=
+iv dir=3D"ltr"><div><div class=3D"gmail_default" style=3D"font-family:verda=
+na,sans-serif">Hi,</div><div class=3D"gmail_default" style=3D"font-family:v=
+erdana,sans-serif"><br></div><div class=3D"gmail_default" style=3D"font-fam=
+ily:verdana,sans-serif">The current share<span style=3D"font-family:Arial,&=
+quot;sans-serif&quot;;font-size:11pt">&nbsp;has been increased to USD 5,542=
+,96.55.</span></div><div class=3D"gmail_default" style=3D"font-family:verda=
+na,sans-serif"><span style=3D"font-family:Arial,&quot;sans-serif&quot;;font=
+-size:11pt"><br></span></div><div class=3D"gmail_default" style=3D"font-fam=
+ily:verdana,sans-serif"><span style=3D"font-family:Arial,&quot;sans-serif&q=
+uot;;font-size:11pt">PFA for more details</span></div><br clear=3D"all"></d=
+iv><div><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_=
+signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div dir=3D"ltr"><div dir=
+=3D"ltr"><div><br></div><div><font color=3D"#000066" face=3D"tahoma, sans-s=
+erif">--</font></div><div><font face=3D"tahoma, sans-serif" color=3D"#00000=
+0">Regards,</font></div><div><font face=3D"tahoma, sans-serif" color=3D"#00=
+0000">Kannan Krishnan</font></div><div><font face=3D"tahoma, sans-serif" co=
+lor=3D"#000000">+91 850 866 8966</font></div><div><div style=3D"font-family=
+:arial;font-size:small"><br></div></div></div></div></div></div></div></div=
+></div></div>
+
+--0000000000006228b30631120ae4--
+
+--0000000000006228b50631120ae6
+Content-Type: application/pdf; name="ABC Bank - Loan Agency.pdf"
+Content-Disposition: attachment; filename="ABC Bank - Loan Agency.pdf"
+Content-Transfer-Encoding: base64
+Content-ID: <f_m8ms4zii0>
+X-Attachment-Id: f_m8ms4zii0
+
+JVBERi0xLjUNCiW1tbW1DQoxIDAgb2JqDQo8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFIvTGFu
+Zyhlbi1JTikgL1N0cnVjdFRyZWVSb290IDEwIDAgUi9NYXJrSW5mbzw8L01hcmtlZCB0cnVlPj4+
+Pg0KZW5kb2JqDQoyIDAgb2JqDQo8PC9UeXBlL1BhZ2VzL0NvdW50IDEvS2lkc1sgMyAwIFJdID4+
+DQplbmRvYmoNCjMgMCBvYmoNCjw8L1R5cGUvUGFnZS9QYXJlbnQgMiAwIFIvUmVzb3VyY2VzPDwv
+Rm9udDw8L0YxIDUgMCBSPj4vRXh0R1N0YXRlPDwvR1M3IDcgMCBSL0dTOCA4IDAgUj4+L1Byb2NT
+ZXRbL1BERi9UZXh0L0ltYWdlQi9JbWFnZUMvSW1hZ2VJXSA+Pi9NZWRpYUJveFsgMCAwIDU5NS4z
+MiA4NDEuOTJdIC9Db250ZW50cyA0IDAgUi9Hcm91cDw8L1R5cGUvR3JvdXAvUy9UcmFuc3BhcmVu
+Y3kvQ1MvRGV2aWNlUkdCPj4vVGFicy9TL1N0cnVjdFBhcmVudHMgMD4+DQplbmRvYmoNCjQgMCBv
+YmoNCjw8L0ZpbHRlci9GbGF0ZURlY29kZS9MZW5ndGggMjI2ND4+DQpzdHJlYW0NCnic3Vpbb1s3
+En434P9AIH3QKSzmDK/nGEUBx5c2C8VuYwW726APinzqpI3lrGX38u87w3PRoeyhmO4+LIrAypE0
+nBkOh/N9Q0o8/0589dXzV8cvT0T5fLZYXYtJs5q+uSy+/lq8ODkWL+b7e8/PQADI0oj5T/t7IEr8
+B0J5JbUWvlLhmxuU++bSi+v1/l4prsO7qnv3zf7e28lRYSYv8O+4sBNRTNs3i1WhJ78UP4r5P/b3
+TtEW2estaKUlwNjCWxy5kRWnr46FGM0AuBkMPhsla/TZldL0Gme36ELwI3hFbl4X0wqVFGAmyz8K
+gPabS/ymufu1qCcfcArLZs25bTEwdWwk6bba5bYtpXfC60r6Tt8JerC4bxgPvJGlM6MBopSlLWsx
+X6IrghlVlRIqE5k5ZGWdNCq2EJSXjHyttuTfThQnWklrYtEpIwqlkioODOcAlJXUVSSqOVEw0ubZ
+h0oqtTUr0JNSYTZZbhDmoImdTmaHzswOhcvX6Zszpq2XseAtI+i0dLRcI1EuE7AKlLmiVoLJFK2y
+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
+3rfpuhO/K2Q7XQwkQOx1Op45kOyMqEHW/G/+/gQkDEGhDQplbmRzdHJlYW0NCmVuZG9iag0KNSAw
+IG9iag0KPDwvVHlwZS9Gb250L1N1YnR5cGUvVHJ1ZVR5cGUvTmFtZS9GMS9CYXNlRm9udC9Bcmlh
+bC9FbmNvZGluZy9XaW5BbnNpRW5jb2RpbmcvRm9udERlc2NyaXB0b3IgNiAwIFIvRmlyc3RDaGFy
+IDMyL0xhc3RDaGFyIDEyMS9XaWR0aHMgNTMgMCBSPj4NCmVuZG9iag0KNiAwIG9iag0KPDwvVHlw
+ZS9Gb250RGVzY3JpcHRvci9Gb250TmFtZS9BcmlhbC9GbGFncyAzMi9JdGFsaWNBbmdsZSAwL0Fz
+Y2VudCA5MDUvRGVzY2VudCAtMjEwL0NhcEhlaWdodCA3MjgvQXZnV2lkdGggNDQxL01heFdpZHRo
+IDI2NjUvRm9udFdlaWdodCA0MDAvWEhlaWdodCAyNTAvTGVhZGluZyAzMy9TdGVtViA0NC9Gb250
+QkJveFsgLTY2NSAtMjEwIDIwMDAgNzI4XSA+Pg0KZW5kb2JqDQo3IDAgb2JqDQo8PC9UeXBlL0V4
+dEdTdGF0ZS9CTS9Ob3JtYWwvY2EgMT4+DQplbmRvYmoNCjggMCBvYmoNCjw8L1R5cGUvRXh0R1N0
+YXRlL0JNL05vcm1hbC9DQSAxPj4NCmVuZG9iag0KOSAwIG9iag0KPDwvQXV0aG9yKEFkbWluKSAv
+Q3JlYXRvcij+/wBNAGkAYwByAG8AcwBvAGYAdACuACAAVwBvAHIAZAAgADIAMAAxADMpIC9DcmVh
+dGlvbkRhdGUoRDoyMDI1MDMyMzEyMTkyOCswNSczMCcpIC9Nb2REYXRlKEQ6MjAyNTAzMjMxMjE5
+MjgrMDUnMzAnKSAvUHJvZHVjZXIo/v8ATQBpAGMAcgBvAHMAbwBmAHQArgAgAFcAbwByAGQAIAAy
+ADAAMQAzKSA+Pg0KZW5kb2JqDQoxNiAwIG9iag0KPDwvVHlwZS9PYmpTdG0vTiA0Mi9GaXJzdCAz
+MTMvRmlsdGVyL0ZsYXRlRGVjb2RlL0xlbmd0aCA2NDI+Pg0Kc3RyZWFtDQp4nO2WwUrkQBCG74Lv
+UG+QdFV3JwERllXZRRRxhD2Ihzj2joMzicQM6Nvv36kR57CHTZ0XhlS6U//XXZWfTDtPJbmKgiNX
+kyuZXEMuCHGJnyd2xCEQM0kZiYUkVMSefFnjAfnQEEeokQ1IZOKaooOuoRgjRFSBK46qqiRhqjNJ
+qK48iacGWgnUVEiJWB3pUiHWSMJuHFIE23F1xILkGJMeG+WmJI+dCi5eEBtsyJPzHnkBsUEeeCEg
+D7yIsjx4MSAPvAqlhFx2qLVwbD+AV8cMRQdQQK6IHSBogJSAoLSQF0MzAio7OSlucnJJt8WiuCnu
+Pl5TsRiH3XI836RtcXlP5QMVNyuack5Pj4/+QeLmS3i+ROZL/HxJmC+J8yXVfEk9X9IYXqXl9Rve
+vzMYwBkc4AwWcAYPOIMJnMEFzmADZ/ABG3zAlu+AwQds8AEbfMAGH7DBB2zwARt8wAYfiMEHYvCB
+WP4QDD4Qgw/E4AP5uw/KT007jH//XOWEfLSZQq2hmQKXGpwG1iAaVIezzRSiBqWwUlgpohRRiihF
+lCJKEaWIUkQpohRRileKV4pXileKV4pXileKV4pXildKUEpQSpgoD7Tv1kF37oaUbvt+LG77Tbpq
+X/PxJvcRXUzd9DQfdPLM9C+hmIOn1+l9vEwf5PboC7C6fkzFdb6cd09fgzukPvbvxSItx+JHap/S
+oPdZ83n/s9usu7R4bvMO88S3DoR2XPfdfjyM698tbqbRr354eez7l+KsX+622NM08/ac0qhGuGqX
+Q38w/v6M68H4bN1u+tXBxGKzfkoHuboO0lZDuy0u1qvdkPa1Xu+2b/f5tBy+uvvfZ7kTx0d/AI2e
+FOwNCmVuZHN0cmVhbQ0KZW5kb2JqDQo1MyAwIG9iag0KWyAyNzggMCAwIDU1NiA1NTYgMCAwIDAg
+MCAwIDM4OSAwIDI3OCAzMzMgMjc4IDAgNTU2IDU1NiA1NTYgNTU2IDU1NiA1NTYgNTU2IDU1NiA1
+NTYgNTU2IDI3OCAwIDAgMCAwIDAgMCA2NjcgNjY3IDcyMiA3MjIgNjY3IDYxMSAwIDcyMiAyNzgg
+MCAwIDU1NiA4MzMgNzIyIDc3OCA2NjcgNzc4IDcyMiA2NjcgNjExIDcyMiAwIDk0NCA2NjcgNjY3
+IDYxMSAwIDAgMCAwIDAgMCA1NTYgNTU2IDUwMCA1NTYgNTU2IDI3OCA1NTYgNTU2IDIyMiAyMjIg
+NTAwIDIyMiA4MzMgNTU2IDU1NiA1NTYgNTU2IDMzMyA1MDAgMjc4IDU1NiA1MDAgNzIyIDUwMCA1
+MDBdIA0KZW5kb2JqDQo1NCAwIG9iag0KPDwvVHlwZS9YUmVmL1NpemUgNTQvV1sgMSA0IDJdIC9S
+b290IDEgMCBSL0luZm8gOSAwIFIvSURbPEIzNTAxRDhFNjU5REZBNDc4RUQxOTM4RjBCMTA0ODE4
+PjxCMzUwMUQ4RTY1OURGQTQ3OEVEMTkzOEYwQjEwNDgxOD5dIC9GaWx0ZXIvRmxhdGVEZWNvZGUv
+TGVuZ3RoIDE0Mj4+DQpzdHJlYW0NCnicNdDbFcFQEIXhORFCLpwEcReEoDBleFSAVx0oQAUK0IU2
+YpyfeZhv7bVmv4yITl0b3anIlzM8HObpCN+O6OKIT3CDl4inBSsV7OEAO/idHLWQ3P/JgAcN8KEJ
+LQigDR0IIYIYEuhCDyykkEEfBjCEHEYwhglMYQZzWMASCljBGjZQwlZfYK8iH2noDysNCmVuZHN0
+cmVhbQ0KZW5kb2JqDQp4cmVmDQowIDU1DQowMDAwMDAwMDEwIDY1NTM1IGYNCjAwMDAwMDAwMTcg
+MDAwMDAgbg0KMDAwMDAwMDEyNSAwMDAwMCBuDQowMDAwMDAwMTgxIDAwMDAwIG4NCjAwMDAwMDA0
+NTEgMDAwMDAgbg0KMDAwMDAwMjc5MCAwMDAwMCBuDQowMDAwMDAyOTQ5IDAwMDAwIG4NCjAwMDAw
+MDMxNzMgMDAwMDAgbg0KMDAwMDAwMzIyNiAwMDAwMCBuDQowMDAwMDAzMjc5IDAwMDAwIG4NCjAw
+MDAwMDAwMTEgNjU1MzUgZg0KMDAwMDAwMDAxMiA2NTUzNSBmDQowMDAwMDAwMDEzIDY1NTM1IGYN
+CjAwMDAwMDAwMTQgNjU1MzUgZg0KMDAwMDAwMDAxNSA2NTUzNSBmDQowMDAwMDAwMDE2IDY1NTM1
+IGYNCjAwMDAwMDAwMTcgNjU1MzUgZg0KMDAwMDAwMDAxOCA2NTUzNSBmDQowMDAwMDAwMDE5IDY1
+NTM1IGYNCjAwMDAwMDAwMjAgNjU1MzUgZg0KMDAwMDAwMDAyMSA2NTUzNSBmDQowMDAwMDAwMDIy
+IDY1NTM1IGYNCjAwMDAwMDAwMjMgNjU1MzUgZg0KMDAwMDAwMDAyNCA2NTUzNSBmDQowMDAwMDAw
+MDI1IDY1NTM1IGYNCjAwMDAwMDAwMjYgNjU1MzUgZg0KMDAwMDAwMDAyNyA2NTUzNSBmDQowMDAw
+MDAwMDI4IDY1NTM1IGYNCjAwMDAwMDAwMjkgNjU1MzUgZg0KMDAwMDAwMDAzMCA2NTUzNSBmDQow
+MDAwMDAwMDMxIDY1NTM1IGYNCjAwMDAwMDAwMzIgNjU1MzUgZg0KMDAwMDAwMDAzMyA2NTUzNSBm
+DQowMDAwMDAwMDM0IDY1NTM1IGYNCjAwMDAwMDAwMzUgNjU1MzUgZg0KMDAwMDAwMDAzNiA2NTUz
+NSBmDQowMDAwMDAwMDM3IDY1NTM1IGYNCjAwMDAwMDAwMzggNjU1MzUgZg0KMDAwMDAwMDAzOSA2
+NTUzNSBmDQowMDAwMDAwMDQwIDY1NTM1IGYNCjAwMDAwMDAwNDEgNjU1MzUgZg0KMDAwMDAwMDA0
+MiA2NTUzNSBmDQowMDAwMDAwMDQzIDY1NTM1IGYNCjAwMDAwMDAwNDQgNjU1MzUgZg0KMDAwMDAw
+MDA0NSA2NTUzNSBmDQowMDAwMDAwMDQ2IDY1NTM1IGYNCjAwMDAwMDAwNDcgNjU1MzUgZg0KMDAw
+MDAwMDA0OCA2NTUzNSBmDQowMDAwMDAwMDQ5IDY1NTM1IGYNCjAwMDAwMDAwNTAgNjU1MzUgZg0K
+MDAwMDAwMDA1MSA2NTUzNSBmDQowMDAwMDAwMDUyIDY1NTM1IGYNCjAwMDAwMDAwMDAgNjU1MzUg
+Zg0KMDAwMDAwNDI0MSAwMDAwMCBuDQowMDAwMDA0NTc0IDAwMDAwIG4NCnRyYWlsZXINCjw8L1Np
+emUgNTUvUm9vdCAxIDAgUi9JbmZvIDkgMCBSL0lEWzxCMzUwMUQ4RTY1OURGQTQ3OEVEMTkzOEYw
+QjEwNDgxOD48QjM1MDFEOEU2NTlERkE0NzhFRDE5MzhGMEIxMDQ4MTg+XSA+Pg0Kc3RhcnR4cmVm
+DQo0OTE2DQolJUVPRg0KeHJlZg0KMCAwDQp0cmFpbGVyDQo8PC9TaXplIDU1L1Jvb3QgMSAwIFIv
+SW5mbyA5IDAgUi9JRFs8QjM1MDFEOEU2NTlERkE0NzhFRDE5MzhGMEIxMDQ4MTg+PEIzNTAxRDhF
+NjU5REZBNDc4RUQxOTM4RjBCMTA0ODE4Pl0gL1ByZXYgNDkxNi9YUmVmU3RtIDQ1NzQ+Pg0Kc3Rh
+cnR4cmVmDQo2MTcxDQolJUVPRg==
+
+--0000000000006228b50631120ae6--
