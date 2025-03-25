@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { RequestTypeService } from '../../services/request-type.service';
+
 interface RequestType {
   type: string;
   subRequestTypes: string[];
 }
+
 @Component({
   selector: 'app-request-type',
   standalone: true,
@@ -14,92 +16,73 @@ interface RequestType {
   styleUrls: ['./add-request-type.component.css'],
 })
 export class RequestTypeComponent implements OnInit {
-  requestTypes: any[] = [];
- // newRequestType = { type: '', subRequestTypes: '' };
-  //newRequestType: { type: string; subRequestTypes: string[] } = { type: '', subRequestTypes: [] };
-  newRequestType: { type: string; subRequestTypes: string | string[] } = { type: '', subRequestTypes: '' };
+  requestTypes: RequestType[] = [];
+  newRequestType: RequestType = { type: '', subRequestTypes: [] };
   subRequestTypeString: string = '';
-  //selectedRequestType = null;
-  selectedRequestType: RequestType | null = { type: '', subRequestTypes: [] };
+  selectedRequestType: RequestType | null = null;
 
   constructor(private requestTypeService: RequestTypeService) {}
+
   ngOnInit(): void {
-    this.requestTypeService.loadRequestTypes().subscribe((data) => {
-      this.requestTypes = data;
-    });
-    // this.selectedRequestType = {
-    //   type: 'Loan Application',
-    //   subRequestTypes: ['Personal Loan', 'Business Loan']
-    // };
+    this.loadRequestTypes();
   }
-  // ngOnInit(): void {
-  //   this.loadRequestTypes();
-  // }
 
+  // Load request types and ensure response is an array
   loadRequestTypes() {
-    this.requestTypeService.loadRequestTypes().subscribe((data: any[]) => {
-      this.requestTypes = data;
+    this.requestTypeService.loadRequestTypes().subscribe((data: any) => {
+      if (data?.CommercialBankLendingService?.RequestTypes && Array.isArray(data.CommercialBankLendingService.RequestTypes)) {
+        this.requestTypes = data.CommercialBankLendingService.RequestTypes;
+      } else {
+        console.error('API response does not contain expected RequestTypes array:', data);
+        this.requestTypes = []; // Prevents NG0900 error
+      }
     });
   }
+  
 
- 
+  // Update subRequestTypes list dynamically
+  updateSubtypeList() {
+    this.newRequestType.subRequestTypes = this.subRequestTypeString.split(',').map(s => s.trim());
+  }
+
+  // Add a new request type
   addRequestType() {
     if (this.newRequestType.type) {
-      // Ensure subRequestTypes is always an array
-      if (typeof this.newRequestType.subRequestTypes === 'string') {
-        this.newRequestType.subRequestTypes = this.newRequestType.subRequestTypes.split(',').map(s => s.trim());
-      }
-  
+      this.updateSubtypeList();
       this.requestTypeService.addRequestType(this.newRequestType).subscribe(() => {
         this.loadRequestTypes();
-        this.newRequestType = { type: '', subRequestTypes: '' }; // Reset with correct type
+        this.newRequestType = { type: '', subRequestTypes: [] };
+        this.subRequestTypeString = '';
       });
     }
   }
-  
-  // editRequestType(requestType: any) {
-  //   this.selectedRequestType = { ...requestType };
-  // }
+
+  // Edit request type
   editRequestType(request: RequestType) {
     this.selectedRequestType = { ...request };
-    
-    // Convert subRequestTypes array into a string for editing
     this.subRequestTypeString = this.selectedRequestType.subRequestTypes.join(', ');
   }
-  // updateRequestType() {
-  //   if (this.selectedRequestType) {
-  //     this.requestTypeService.updateRequestType(this.selectedRequestType).subscribe(() => {
-  //       this.loadRequestTypes();
-  //       this.selectedRequestType = { type: '', subRequestTypes: [] };
-  //     });
-  //   }
-  // }
-  updateSubtypeList() {
-    if (this.selectedRequestType) {
-      this.selectedRequestType.subRequestTypes = this.subRequestTypeString.split(',').map(subType => subType.trim());
-    }
-  }
+
+  // Update request type
   updateRequestType() {
     if (this.selectedRequestType) {
-      // Convert the comma-separated string to an array before saving
-      this.selectedRequestType.subRequestTypes = this.selectedRequestType.subRequestTypes
-        .toString()
-        .split(',')
-        .map(subType => subType.trim());
+      this.selectedRequestType.subRequestTypes = this.subRequestTypeString.split(',').map(s => s.trim());
   
-      // Find the index of the selected request type
-      const index = this.requestTypes.findIndex(req => req.type === this.selectedRequestType!.type);
-  
-      if (index !== -1) {
-        this.requestTypes[index] = { ...this.selectedRequestType };
-      }
-  
-      // Clear the selectedRequestType after updating
-      this.selectedRequestType = null;
-      this.selectedRequestType = { type: '', subRequestTypes: [] };
+      this.requestTypeService.updateRequestType(this.selectedRequestType).subscribe({
+        next: () => {
+          this.loadRequestTypes();
+          this.selectedRequestType = null;
+          this.subRequestTypeString = '';
+        },
+        error: (error) => {
+          console.error('Update Error:', error);
+          alert(`Update failed: ${error.error?.detail || 'Something went wrong!'}`);
+        }
+      });
     }
   }
-  
+
+  // Delete request type
   deleteRequestType(type: string) {
     this.requestTypeService.deleteRequestType(type).subscribe(() => {
       this.loadRequestTypes();
