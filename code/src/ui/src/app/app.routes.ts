@@ -9,8 +9,8 @@ import { PrioritizationRulesComponent } from './prioritization-rules/prioritizat
 
 export const routes: Routes = [
 //   { path: '', component: EmailClassificationComponent },
-  { path: 'menu1', component: RequestTypeComponent },
-//   { path: 'menu2', component: PrioritizationRulesComponent },
+   { path: 'menu1', component: RequestTypeComponent },
+   { path: 'menu2', component: PrioritizationRulesComponent },
 ];
 
 @NgModule({

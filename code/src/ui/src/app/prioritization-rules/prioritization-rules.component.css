@@ -1,0 +1,22 @@
+body {
+    background-color: #f8f9fa;
+}
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+.table thead {
+    position: sticky;
+    top: 0;
+    background: #343a40;
+    color: white;
+    z-index: 2;
+}
+.card-header {
+    font-size: 18px;
+    font-weight: bold;
+}
+.action-buttons .btn {
+    margin-right: 5px;
+}
