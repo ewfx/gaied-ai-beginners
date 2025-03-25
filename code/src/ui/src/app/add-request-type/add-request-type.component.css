@@ -1,19 +1,19 @@
 .table-responsive {
-    max-height: 300px; /* Adjust height as needed */
+    max-height: 300px;  
     overflow-y: auto;
   }
   
   .table thead {
     position: sticky;
     top: 0;
-    background-color: #343a40; /* Dark background to match Bootstrap */
+    background-color: #343a40; 
     color: white;
     z-index: 100;
   }
   
   .scrollable-tbody {
     display: block;
-    max-height: 250px; /* Adjust height as needed */
+    max-height: 250px;  
     overflow-y: auto;
   }
   
@@ -42,7 +42,7 @@
   
   .table-body {
     display: block;
-    max-height: 250px; /* Set height for scroll */
+    max-height: 250px;  
     overflow-y: auto;
     width: 100%;
   }
