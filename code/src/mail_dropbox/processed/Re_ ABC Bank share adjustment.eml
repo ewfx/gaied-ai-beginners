@@ -1,0 +1,221 @@
+Received: from OS3PR01MB9303.jpnprd01.prod.outlook.com (2603:1096:604:1c6::12)
+ by OS7PR01MB11965.jpnprd01.prod.outlook.com with HTTPS; Tue, 25 Mar 2025
+ 04:59:57 +0000
+Received: from AM6PR04CA0051.eurprd04.prod.outlook.com (2603:10a6:20b:f0::28)
+ by OS3PR01MB9303.jpnprd01.prod.outlook.com (2603:1096:604:1c6::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8534.42; Tue, 25 Mar
+ 2025 04:59:56 +0000
+Received: from AM3PEPF00009B9D.eurprd04.prod.outlook.com
+ (2603:10a6:20b:f0:cafe::cd) by AM6PR04CA0051.outlook.office365.com
+ (2603:10a6:20b:f0::28) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.42 via Frontend Transport; Tue,
+ 25 Mar 2025 04:59:54 +0000
+Authentication-Results: spf=pass (sender IP is 209.85.160.51)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 209.85.160.51 as permitted sender) receiver=protection.outlook.com;
+ client-ip=209.85.160.51; helo=mail-oa1-f51.google.com; pr=C
+Received: from mail-oa1-f51.google.com (209.85.160.51) by
+ AM3PEPF00009B9D.mail.protection.outlook.com (10.167.16.22) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.8534.20
+ via Frontend Transport; Tue, 25 Mar 2025 04:59:54 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:007FDBABCE969CA608C7A091ACEEAF5361367992541BBB6D2B7C68888331F9E9;UpperCasedChecksum:2D1437C44409D92F7166CDE839D27509E7ABF2D68B6366B65B0C8EE3B0EAD17A;SizeAsReceived:2907;Count:17
+Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-2b38896c534so2506334fac.0
+        for <aibeg_finance@hotmail.com>; Mon, 24 Mar 2025 21:59:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742878793; x=1743483593; darn=hotmail.com;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=8vX5wLcjvI3ZtfZHyzS+fnB4C+BzGN7o3Z+GJKy9Yzo=;
+        b=kTiJWrBVA5w5/ZrzEMGIusj8jt/V5VTU8yDEfzH/2jTF0RvvZsjxKIGc3B3PeVSl/y
+         j+IUncpZHZVoFqB2w4MoNFQFpHzJDQdq2JX8qSGhv2JLfT4eAGUG3fhgATjHf0GjM7Pi
+         SDn1e3EXI7cj9dy9E/PuRn8tge+UvUSRIM0sN2QNo2k9Zt1Q3T4d/69l+3jMPGhS0jeF
+         SXxtZy95pnxncBcr2TxUG9zf2VKS4B94TI+b6BBT89Tiww7X/v3epPbjzuVLC0MqyKtc
+         +KQOJbm7mEg4UnS1VsXALyz9ZrnmPPdiXIUf/zkdSYkglxzIRZWI+Bpp7ihvBiTJAafE
+         1Q9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742878793; x=1743483593;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=8vX5wLcjvI3ZtfZHyzS+fnB4C+BzGN7o3Z+GJKy9Yzo=;
+        b=AZkdvfGwAhtLYWEG+Kffrdx8D9rWBgIZJHh9rMor4WdvhseAOiyqcUgHhhSaW2Ok7J
+         4aWFFk4IQqSbMy8/U23pBk322gZdoFksGPexId3jaqVTwr/CjXOfdvcCgDBDBU8MlN66
+         WIx8uuxHPolYk+TmP9HN+bQFcNRFESfdEAWhgwRs5+0oWWea4Z2hhkorAhqfXFO0OM37
+         0EAma4LHilX5Zvl5Sbh+8XRcgn6tkNBtpCWQTVH7I/3pTKqruOSTEVeH1iYFmJpYh2TD
+         FSGsAzg3RaHKtJIY+H3YD0/EkWOaFiKJ2ORGJh0GosGSXyIzkot706lSvzDcT/JDpeIX
+         +nlg==
+X-Gm-Message-State: AOJu0YwvsTmv1xJqBm0ZMvrMs/1YXLpLetA6v6B8rijY8bACJSwc+vFf
+	WSxkZbThEjgCoJAyfvowt67OMdIJoIJw5rg5y0E8fygEb3je+Iut9KEy9WcVUQ/NORGw3dEPIK6
+	l0Bvp+SBLMqlujH07RsBdYnY8rpImCw==
+X-Gm-Gg: ASbGncus92xSRuP767wptATbjYhSbL6Om9pz8GpGSHLW7OKWsJe9MIH/uMnuu8qYRom
+	aaPgVk/1uRTlTVCDUaQJZLEYN8ZtauYPTHPBEm6OC8XevqvzxSuIawX5MC9UIUI4PP31tPvA1oF
+	yAUIiNzToTG4Bev0w80DhwUZj6Xqs=
+X-Google-Smtp-Source: AGHT+IEgtPHcWIdMggqS0fsBIxwTDruD8VUyHUv4Uo0vQfhbaHK6jjvILT0OrS0CK0T32PIbIAT6R50jeEe/eQNRdPg=
+X-Received: by 2002:a05:6871:ea0f:b0:2c1:51f7:e648 with SMTP id
+ 586e51a60fabf-2c780544564mr10942460fac.35.1742878793312; Mon, 24 Mar 2025
+ 21:59:53 -0700 (PDT)
+References: <CAJB-KrNLCyYunYPwsN4p=movrf2CLiVfHk4OwXAmFRfBgHsd8w@mail.gmail.com>
+In-Reply-To: <CAJB-KrNLCyYunYPwsN4p=movrf2CLiVfHk4OwXAmFRfBgHsd8w@mail.gmail.com>
+From: Kannan Krishnan <kannaa.krishnaa@gmail.com>
+Date: Tue, 25 Mar 2025 10:29:41 +0530
+X-Gm-Features: AQ5f1JoJqhJBbS2n3V2wTj3LXyKW6wtLQkvxhVuCP-IS2KxN4bWIit35oZrhVX4
+Message-ID: <CAJB-KrMgm8m0f6K2Esy43_w_pXSbVVz5KuTjNn5p06AMpoR9xA@mail.gmail.com>
+Subject: Re: ABC Bank share adjustment
+To: aibeg_finance@hotmail.com
+Content-Type: multipart/alternative; boundary="0000000000005cb1960631239745"
+X-IncomingHeaderCount: 17
+Return-Path: kannaa.krishnaa@gmail.com
+X-MS-Exchange-Organization-ExpirationStartTime: 25 Mar 2025 04:59:54.3044
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id: cd293dd6-4541-4a79-75e9-08dd6b59e1eb
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM3PEPF00009B9D:EE_|OS3PR01MB9303:EE_|OS7PR01MB11965:EE_
+X-MS-Exchange-Organization-AuthSource: AM3PEPF00009B9D.eurprd04.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-UserLastLogonTime: 3/25/2025 4:18:49 AM
+X-MS-Office365-Filtering-Correlation-Id: cd293dd6-4541-4a79-75e9-08dd6b59e1eb
+X-MS-Exchange-EOPDirect: true
+X-Sender-IP: 209.85.160.51
+X-SID-PRA: KANNAA.KRISHNAA@GMAIL.COM
+X-SID-Result: PASS
+X-MS-Exchange-Organization-SCL: 1
+X-Microsoft-Antispam: BCL:0;ARA:1444111002|13020799006|461199028|47200799021|58200799018|3151999006|2100799027|9020799016|1370799030|1380799030|1360799030|3412199025|440099028;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Mar 2025 04:59:54.1794
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: cd293dd6-4541-4a79-75e9-08dd6b59e1eb
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: AM3PEPF00009B9D.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OS3PR01MB9303
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:03.5443077
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.8534.033
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:1;dest:I;ENG:(5062000308)(920221119095)(90000117)(920221120095)(90010023)(91010020)(91040095)(9050020)(9100341)(944500132)(4810010)(4910033)(9575002)(10195002)(9320005)(120001);
+X-Message-Delivery: Vj0xLjE7dXM9MDtsPTA7YT0wO0Q9MTtHRD0xO1NDTD0z
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?TGNYM0RCRk1MZDFoWmk2MndJbXFqeUtmZ1NYVzBvNzkvYzRLYi9QeFZlT2pI?=
+ =?utf-8?B?TXhlVEY2SlpqNWM1eDNydTR4M2x0VlhXUnFmcWQxblJlRk5nelByYjZrS0hL?=
+ =?utf-8?B?VDVlNUVGeUpjUmhIK0h5ZTRwQWdKVmliUUJKcW52NVJsQXZncXI0YThQRk8v?=
+ =?utf-8?B?U0I3ZWJ2elRuMjhZTDNSREhBUmlKT2ZGM2ZJQkx4dXRkVzR0VXhvN2pPZ1FI?=
+ =?utf-8?B?UFp4M0lwWEV4RlBUZDJPRjJhc051UXlLRzZCdzZ3Ym14QmxLb0JUUGhjOTdO?=
+ =?utf-8?B?eVR4aU1zRWgyRmxDTGNMTXpjU3VUd1RQejdtVXhWUjBSMWdnOTZXb2ttUFlM?=
+ =?utf-8?B?S1lGSitHOGVXWnQ0cjFtV0hobEZiK2Nqdm1uNWpReHdPd285YmpoSnBGSU1a?=
+ =?utf-8?B?bVZqaEdIcEROOW1ackw3SmlyTDJ1OUFrMG9BdHJ4b2czRDlwdkdFK0VidjFR?=
+ =?utf-8?B?ZEJJc01MVkU5bExBRklDR1Z0NXFSMjgwU3ZuR0wzb0RKaVplZDhMbmFxV25s?=
+ =?utf-8?B?WHorQVRyN2xkUnd2eEd6VmpjTW1xYUdZV3hkZ21kc0RWcXZzRTNxdHROTWo0?=
+ =?utf-8?B?RmFiSGZ5OW42TUV1clFCOUtQdFpzeGpFZUd0TTJRSm5UTXFQck81SkMrM3BM?=
+ =?utf-8?B?Y1c4dTYxZVJuMzJ0eFhUYzMwRDBIZ1pkcjdpV0daanFacFJCYm5DVVB3Uk5U?=
+ =?utf-8?B?dWtxN2l5MHdFT3FtTzZQRTR3WXpOVnJIOTZKUmFIeWw1d3ZjTWZxQ2hUcUJV?=
+ =?utf-8?B?ZlJhOTloT2Q3K2hKRy82aHpMQWhySFk5ZnpGV0JoTGNNOWx6VFdCa3dZYXBX?=
+ =?utf-8?B?a3JxNzJwZ0F4MDJGK0NOUmxGazlSSnNhT3FHU0tTeGhLd3ZiUUJSMVhqdzBJ?=
+ =?utf-8?B?L0E2QytnVjFwcTlxcjk4OUg4ZGlYeno1bjk0N2ZUSmJ2aU5rY2lyUkhwMVJS?=
+ =?utf-8?B?c2lreXo4a0JUcTJvNnA5TjB2ckIyaW1FY243eGF5SXplYml3R2dkUnhxakZU?=
+ =?utf-8?B?MGgwM3dUZ3p1R0hOQ1Y3R2pIT3NQdFNXaFdDOVAzWkZWY0o1T01nNEZGMHRF?=
+ =?utf-8?B?K0Q2aGRrcUo5UXFWcnpvYnN4MGJUSGU0UG12SUtGRld6MElsQmVSV2lob013?=
+ =?utf-8?B?Sk0xSUwyaDZsK2tMZG1valE2MDZWbDc3TTkyS3ZuQk1HWlJpcTYzQUZlVysx?=
+ =?utf-8?B?bmZDcHBlTG1HVlRFbURNc3hIdEVObFovSGVVM1ZJQTdQTEQ4U2hyN09VSUJj?=
+ =?utf-8?B?amY1dEwvNXJuUy8zS1pvL1lOZ1RYN2NQOUxRV25VY0d2QlNJTnZnZklhSld4?=
+ =?utf-8?B?ZjVXT25QNDZKVkExdXJjcElpdEZLZ2d4cEhuNmNmQm9ta3F0enc0cDFhRjlU?=
+ =?utf-8?B?ajArRXh3dXVpdUdkNmp4bTc0OCtCM0xCbEV1NDNOVEE3MkhEckZUM1NXcnlI?=
+ =?utf-8?B?ZEVtcWU0VEJEdVFWUEMyL2tORkRtcjkzUno2dmFCZ1E3QkV1aTQrcm1Db0Nt?=
+ =?utf-8?B?VVorY3Y5RG5nQjZEL2lKblVIbE1sRW5pd3RJakFnNlUvZXE5Rmc2YUxHTlF1?=
+ =?utf-8?B?SXk4dytFajBkN3E3STY3Z3REUGdiSWdjVUpIb2pzbTNlL2lseXFPbTJQR3FM?=
+ =?utf-8?B?TDhJV3ppR25WTXhiaFJ4Vk9VSWw5alEyeWxIeHZzMzBPUHRvZlVFUlZLTkc0?=
+ =?utf-8?B?TjN4cXZQK0o2b0I4UTZIMVJNSzY0MVJydy92d2hLNURQYWhPSDZmYkxxU1py?=
+ =?utf-8?B?TVEyRFdNdXR0Z1lRMEp3Zmd5a2QvRFIzdUdRMDAxSGxDb3RZOHdMY3ZjUUZK?=
+ =?utf-8?B?cGdjQmdBeTBmWEFVNDM0WUtpblBFWjdydmVyNDdEazhSSjlTMG14QlRNeUxr?=
+ =?utf-8?B?WUdwL0lwdnpGZXVjNW1BWXh1VzcxYy9XWG03cWgzaGpxajNBU2VZZDI4Qm9v?=
+ =?utf-8?B?YzNleFRHSkJGcnc0QURRVUY5Yk4vQ0d4ZlRMQjZjM0hickJ1Q3pUalVETkls?=
+ =?utf-8?B?ck9lWnhWWkRVMWN0ejAxOHhnMUtJVzI2aUtxR1J1NithSGcvS0pqZGlLL2xi?=
+ =?utf-8?B?WHRIM3RYSVB3bEVMamQ5V0ZVcGc0WnIyeU9sc3loOGhNc1RmRWdUMml4cEty?=
+ =?utf-8?B?U1FyU1owMzRVemt6TllnSjlYNEZVcW1YZ0lBYTJHM0g4M25ZT2ZxNDgxUm54?=
+ =?utf-8?B?RzNOYmJDZTRGaUk2RDVYYlhscDd2RWdNOVRzMFZodXpzUzdSOHVsY014TE1B?=
+ =?utf-8?B?blNGU0hTWS9BT2VTQXBUSDUrZktOMFFWVU1sRU5nS3E1TzA2SnY4WElDNHEx?=
+ =?utf-8?B?SUlKMGEreHRkL1pNL3N1VGtEaEJBS2NJWWpXMmNZcHJmVmlvWE10VjFPUUpR?=
+ =?utf-8?Q?e8TarMfC/+IU4FtI=3D?=
+MIME-Version: 1.0
+
+--0000000000005cb1960631239745
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Any update on the request?
+
+
+--
+Regards,
+Kannan Krishnan
++91 850 866 8966
+
+
+
+On Mon, Mar 24, 2025 at 1:33=E2=80=AFPM Kannan Krishnan <kannaa.krishnaa@gm=
+ail.com>
+wrote:
+
+> Hi,
+>
+> The current share has been increased to USD 5,542,96.55.
+>
+> PFA for more details
+>
+>
+> --
+> Regards,
+> Kannan Krishnan
+> +91 850 866 8966
+>
+>
+
+--0000000000005cb1960631239745
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><d=
+iv dir=3D"ltr"><div><div class=3D"gmail_default" style=3D"font-family:verda=
+na,sans-serif">Any update on the request?</div><br clear=3D"all"></div><div=
+><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=3D"gmail_signatu=
+re"><div dir=3D"ltr"><div><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr=
+"><div><br></div><div><font color=3D"#000066" face=3D"tahoma, sans-serif">-=
+-</font></div><div><font face=3D"tahoma, sans-serif" color=3D"#000000">Rega=
+rds,</font></div><div><font face=3D"tahoma, sans-serif" color=3D"#000000">K=
+annan Krishnan</font></div><div><font face=3D"tahoma, sans-serif" color=3D"=
+#000000">+91 850 866 8966</font></div><div><div style=3D"font-family:arial;=
+font-size:small"><br></div></div></div></div></div></div></div></div></div>=
+<br></div><br><div class=3D"gmail_quote gmail_quote_container"><div dir=3D"=
+ltr" class=3D"gmail_attr">On Mon, Mar 24, 2025 at 1:33=E2=80=AFPM Kannan Kr=
+ishnan &lt;<a href=3D"mailto:kannaa.krishnaa@gmail.com">kannaa.krishnaa@gma=
+il.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex"><div dir=3D"ltr"><div><div class=3D"gmail_default" style=3D"font-fami=
+ly:verdana,sans-serif">Hi,</div><div class=3D"gmail_default" style=3D"font-=
+family:verdana,sans-serif"><br></div><div class=3D"gmail_default" style=3D"=
+font-family:verdana,sans-serif">The current share<span style=3D"font-family=
+:Arial,&quot;sans-serif&quot;;font-size:11pt">&nbsp;has been increased to U=
+SD 5,542,96.55.</span></div><div class=3D"gmail_default" style=3D"font-fami=
+ly:verdana,sans-serif"><span style=3D"font-family:Arial,&quot;sans-serif&qu=
+ot;;font-size:11pt"><br></span></div><div class=3D"gmail_default" style=3D"=
+font-family:verdana,sans-serif"><span style=3D"font-family:Arial,&quot;sans=
+-serif&quot;;font-size:11pt">PFA for more details</span></div><br clear=3D"=
+all"></div><div><div dir=3D"ltr" class=3D"gmail_signature"><div dir=3D"ltr"=
+><div><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><div><br></div><di=
+v><font color=3D"#000066" face=3D"tahoma, sans-serif">--</font></div><div><=
+font face=3D"tahoma, sans-serif" color=3D"#000000">Regards,</font></div><di=
+v><font face=3D"tahoma, sans-serif" color=3D"#000000">Kannan Krishnan</font=
+></div><div><font face=3D"tahoma, sans-serif" color=3D"#000000">+91 850 866=
+ 8966</font></div><div><div style=3D"font-family:arial;font-size:small"><br=
+></div></div></div></div></div></div></div></div></div></div>
+</blockquote></div>
+
+--0000000000005cb1960631239745--

@@ -4,7 +4,8 @@ import os
 import json
 import re
 import time
-from trained_model import generate_reasoning, classification_Prompt
+from duplicate_mail_validation import is_duplicate
+from trained_model import  classification_Prompt
 import shutil
 from email_processor import convert_email_to_json
 # Load environment variables from .env file
@@ -39,19 +40,6 @@ def remove_python_cache():
                 os.remove(pyc_file)
 
 
-def get_classify(prompt):
-   
-    try:
-        completion = openai.ChatCompletion.create(
-            model=model,
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
-        )
-        return completion.choices[0].message["content"]
-    except Exception as e:
-        return f"An error occurred: {e}"
-
 def process_and_classify_emails():
     """
     Process and classify emails from the 'unread' directory.
@@ -60,12 +48,18 @@ def process_and_classify_emails():
         # List all files in the directory
         remove_python_cache()
         email_files = read_unread_mailBox()
-        file_names = [os.path.basename(file) for file in email_files]
-
+        file_names = [os.path.basename(file["file_name"]) for file in email_files]
+        
         # Process and classify each email
         email_results = []
         for email_file in email_files:
-            email_content = convert_email_to_json(email_file)
+            email_content = convert_email_to_json(email_file["file_name"])
+
+            is_duplicate_email = is_duplicate(email_content) 
+            if is_duplicate_email:
+                print(f"Skipping duplicate email: {email_content['message_id']}")
+                email_file["is_duplicate"] = True
+                continue  # Skip processing this email if it's a duplicate
                                 
             classification = classify_content(email_content["classify_content"])
             classification["email_subject"] = email_content["subject"]
@@ -144,8 +138,10 @@ def read_unread_mailBox():
 
         # List all files in the directory
         email_files = [os.path.join(email_path, file) for file in os.listdir(email_path) if os.path.isfile(os.path.join(email_path, file))]
-
-        return email_files
+        file_list = []
+        for file in email_files:
+            file_list.append({"file_name":file,"is_duplicate":False})
+        return file_list
 
     except Exception as e:
         return f"Error: {e}"
@@ -195,6 +191,11 @@ def add_to_classified_mail(email_content):
     :param json_file_path: Path to the classified_mail.json file.
     """
     try:
+        try:
+            json.dumps(email_content)  # This will raise an error if email_content is not serializable
+        except (TypeError, ValueError) as e:
+            return f"Invalid email content: {e}"
+
         current_dir = os.path.dirname(os.path.abspath(__file__))
         json_file_path = os.path.join(current_dir,"dataset","db_data","classified_mail.json")
 
