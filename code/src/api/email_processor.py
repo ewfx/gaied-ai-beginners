@@ -1,3 +1,4 @@
+import datetime
 import email
 import os
 import json
@@ -5,6 +6,7 @@ from email import policy
 from email.parser import BytesParser
 import extract_msg
 import mimetypes
+from secure_app import apply_security_rules
 from doc_processor import read_document
 
 def read_eml_file(file_path):
@@ -15,6 +17,9 @@ def read_eml_file(file_path):
         msg = BytesParser(policy=policy.default).parse(file)
 
         email_content = {
+            "message_id": msg["Message-ID"], 
+            "in_reply_to": msg["In-Reply-To"],
+            "references": msg["References"],
             "subject": msg["subject"],
             "from": msg["from"],
             "to": msg["to"],
@@ -64,10 +69,13 @@ def read_msg_file(file_path):
     msg = extract_msg.Message(file_path)  # Open the .msg file
     try:
         email_content = {
+            "message_id": msg.headers.get("Message-ID"),  # Extract the unique Message-ID
+            "in_reply_to": msg["In-Reply-To"],  # Message-ID of the email this is replying to
+            "references": msg["References"],
             "subject": msg.subject,
             "from": msg.sender,
             "to": msg.to,
-            "date": msg.date,
+            "date": msg.date.isoformat() if isinstance(msg.date, datetime.datetime) else msg.date,  # Convert datetime to string
             "body": msg.body if msg.body else msg.htmlBody,
             "attachments": []
         }
@@ -126,7 +134,7 @@ def convert_email_to_json(file_path):
         email_content = read_msg_file(file_path)
     else:
         raise ValueError("Unsupported file format. Please provide a .eml or .msg file.")
-    
+    email_content = apply_security_rules(email_content)
     return email_content
 
 

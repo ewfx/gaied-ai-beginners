@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from aimain import get_classify,classify_content,process_and_classify_emails
+from aimain import process_and_classify_emails
 from requesttypes_app import router as requesttypes_router
 from prioritizationrules_app import router as prioritizationrules_router
 
@@ -36,3 +36,5 @@ async def process_and_classify_emails_endpoint():
 # Include the routers
 app.include_router(requesttypes_router, prefix="/request-types", tags=["Request Types"])
 app.include_router(prioritizationrules_router, prefix="/prioritization-rules", tags=["Prioritization Rules"])
+app.include_router(requesttypes_router, prefix="/request-types", tags=["Request Types"])
+app.include_router(prioritizationrules_router, prefix="/unread-emails", tags=["Read Unread Emails"])
