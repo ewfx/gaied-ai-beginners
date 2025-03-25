@@ -1,9 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from aimain import process_and_classify_emails
 from requesttypes_app import router as requesttypes_router
 from prioritizationrules_app import router as prioritizationrules_router
+from securityrules_app import router as securityrules_router
+import os
 
 # Initialize FastAPI app
 app = FastAPI()
@@ -33,8 +36,25 @@ async def process_and_classify_emails_endpoint():
         print(e)
         raise HTTPException(status_code=500, detail=str(e))
 
+
+# API to get classified_mail.json
+@app.get("/classified-mails")
+async def get_classified_mails():
+    file_path = os.path.join("data", "classified_mail.json")  # Adjust the path as needed
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail="classified_mail.json not found")
+    return FileResponse(file_path, media_type="application/json", filename="classified_mail.json")
+
+# API to get duplicate_mail.json
+@app.get("/duplicate-mails")
+async def get_duplicate_mails():
+    file_path = os.path.join("data", "duplicate_mail.json")  # Adjust the path as needed
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail="duplicate_mail.json not found")
+    return FileResponse(file_path, media_type="application/json", filename="duplicate_mail.json")
+
+
 # Include the routers
 app.include_router(requesttypes_router, prefix="/request-types", tags=["Request Types"])
 app.include_router(prioritizationrules_router, prefix="/prioritization-rules", tags=["Prioritization Rules"])
-app.include_router(requesttypes_router, prefix="/request-types", tags=["Request Types"])
-app.include_router(prioritizationrules_router, prefix="/unread-emails", tags=["Read Unread Emails"])
+app.include_router(securityrules_router, prefix="/security-rules", tags=["Security Rules"])

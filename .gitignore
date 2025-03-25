@@ -216,3 +216,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+code/src/ui_old/*
