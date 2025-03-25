@@ -1,5 +1,83 @@
-<div class="container mt-5">
-    <h1>Menu 2</h1>
-    <p>This is the content of Menu 2.</p>
+<div class="container mt-4">
+  <h2 class="text-center">Prioritization Rules</h2>
+
+  <div class="alert alert-danger" *ngIf="errorMessage">
+    {{ errorMessage }}
   </div>
   
+  <!-- Add New Rule -->
+  <div class="card p-3 mb-4 shadow-sm">
+    <h4>Add New Rule</h4>
+    <div class="row">
+      <div class="col-md-2">
+        <input type="number" [(ngModel)]="newRule.priority" class="form-control" placeholder="Priority" required>
+      </div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="newRule.request_type" class="form-control" placeholder="Request Type">
+      </div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="newRule.description" class="form-control" placeholder="Description">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary w-100" (click)="addRule()">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rules Table -->
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      Prioritization Rules
+    </div>
+    <div class="table-container">
+      <table class="table table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Priority</th>
+            <th>Request Type</th>
+            <th>Description</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rule of rules">
+            <td>{{ rule.priority }}</td>
+            <td>{{ rule.request_type?.join(', ') }}</td>
+            <td>{{ rule.description }}</td>
+            <td class="text-center">
+              <button class="btn btn-warning btn-sm me-2" (click)="editRule(rule)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteRule(rule.priority)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Edit Rule -->
+  <div *ngIf="selectedRule" class="card p-3 mt-4 shadow-sm">
+    <h4>Edit Rule</h4>
+    <div class="row">
+      <div class="col-md-3">
+        <input type="number" [(ngModel)]="selectedRule.priority" class="form-control">
+      </div>
+      <div class="col-md-4">
+        <input type="text" [(ngModel)]="requestTypeString" class="form-control">
+      </div>
+      <div class="col-md-5">
+        <input type="text" [(ngModel)]="selectedRule.description" class="form-control">
+      </div>
+    </div>
+    <div class="mt-3">
+      <button class="btn btn-success" (click)="updateRule()">Update Rule</button>
+      <button class="btn btn-secondary ms-2" (click)="selectedRule = null">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="text-center text-muted mt-4">
+    &copy; AI Begineers 2025 
+  </div>
+</div>
