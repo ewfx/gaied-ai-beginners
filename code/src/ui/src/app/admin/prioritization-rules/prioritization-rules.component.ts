@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { PrioritizationRulesService } from '../../../services/prioritization-rules.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+export interface PrioritizationRule {
+  priority: number;
+  request_type: string;
+  description: string;
+  isEditing?: boolean; // Flag to track edit state
+  isAdding?: boolean; // Flag to track add state
+}
 
 @Component({
   selector: 'app-prioritization-rules',
   templateUrl: './prioritization-rules.component.html',
   styleUrl: './prioritization-rules.component.css',
   standalone: true,
-  imports:[CommonModule]
+  imports:[CommonModule,FormsModule]
 })
-export class PrioritizationRulesComponent {
-
-  priorities: any[] = [];
-  newRule = { priority: '', request_type: '', description: '' };
-  updateRule = { priority: '', request_type: '', description: '' };
+export class PrioritizationRulesComponent implements OnInit {
+  priorities: PrioritizationRule[] = [];
 
   constructor(private prioritizationRulesService: PrioritizationRulesService) {}
 
@@ -38,7 +43,50 @@ export class PrioritizationRulesComponent {
   }
 
   addRule(): void {
-    this.prioritizationRulesService.post(this.newRule).subscribe(
+    const newRule: PrioritizationRule = {
+      priority: this.priorities.length + 1, // Assign a temporary priority
+      request_type: '',
+      description: '',
+      isEditing: true,
+      isAdding: true,
+    };
+
+    // Add the new rule at the beginning of the array
+    this.priorities.unshift(newRule);
+  }
+
+  onEdit(rule: PrioritizationRule): void {
+    rule.isEditing = true;
+  }
+
+  onSave(rule: PrioritizationRule): void {
+    rule.isEditing = false;
+
+    if (rule.isAdding) {
+      // Handle adding a new rule (e.g., API call)
+      console.log('Adding new rule:', rule);
+      rule.isAdding = false;
+      this.onAddRule(rule);
+    } else {
+      // Handle updating an existing rule (e.g., API call)
+      console.log('Updating rule:', rule);
+      this.updateExistingRule(rule);
+    }
+  }
+
+  onCancel(rule: PrioritizationRule): void {
+    if (rule.isAdding) {
+      // Remove the rule if it was newly added and canceled
+      this.priorities = this.priorities.filter((r) => r !== rule);
+    } else {
+      // Reset the editing state
+      rule.isEditing = false;
+    }
+  }
+  
+ 
+  onAddRule(rule: PrioritizationRule): void {
+    this.prioritizationRulesService.post(rule).subscribe(
       (response) => {
         console.log('Rule added successfully:', response);
         this.loadPriorityRules(); // Refresh the list
@@ -49,8 +97,8 @@ export class PrioritizationRulesComponent {
     );
   }
 
-  updateExistingRule(): void {
-    this.prioritizationRulesService.put(this.updateRule).subscribe(
+  updateExistingRule(rule: PrioritizationRule): void {
+    this.prioritizationRulesService.put(rule).subscribe(
       (response) => {
         console.log('Rule updated successfully:', response);
         this.loadPriorityRules(); // Refresh the list
@@ -72,4 +120,5 @@ export class PrioritizationRulesComponent {
       }
     );
   }
+
 }
