@@ -1,5 +1,5 @@
 import json
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
@@ -11,6 +11,7 @@ import os
 
 # Initialize FastAPI app
 app = FastAPI()
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -61,6 +62,24 @@ async def get_duplicate_mails():
         with open(DUPLICATE_MAIL_JSON, "r") as file:
             duplicate_emails = json.load(file)
         return duplicate_emails
+
+
+UPLOAD_FOLDER = "uploaded_files"  # Define the folder where files will be saved
+
+# API to upload a file
+@app.post("/upload-file/")
+async def upload_file(file: UploadFile = File(...)):
+    UPLOAD_FOLDER = os.path.join(
+    os.path.dirname(__file__), "..", "mail_dropbox", "unread"
+    )
+
+    # Ensure the upload folder exists
+    os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+    file_path = os.path.join(UPLOAD_FOLDER, file.filename)
+    with open(file_path, "wb") as f:
+        f.write(await file.read())
+    return {"message": f"File '{file.filename}' uploaded successfully to '{UPLOAD_FOLDER}'."}
 
 # Include the routers
 app.include_router(requesttypes_router, prefix="/request-types", tags=["Request Types"])
