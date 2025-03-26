@@ -11,6 +11,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AddRequestTypeComponent } from './admin/add-request-type/add-request-type.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { PrioritizationRulesComponent } from './admin/prioritization-rules/prioritization-rules.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     Test2Component,
     ComingSoonComponent,
     AdminComponent,
-    AddRequestTypeComponent    
+    AddRequestTypeComponent,
+    PrioritizationRulesComponent    
   ],
   imports: [
     BrowserModule,

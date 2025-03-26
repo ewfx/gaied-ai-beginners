@@ -17,7 +17,7 @@
         <tr *ngFor="let request of requestTypes; let i = index">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ request.type }}</td>
-            <td>{{ request.subRequestTypes?.join(', ') || 'N/A' }}</td>
+            <td>{{ request?.subRequestTypes?.join(', ') || 'N/A' }}</td>
             <td>
                 <!-- Edit Button -->
                 <button class="btn btn-sm btn-primary me-2" (click)="onEdit(request)">
