@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ClassifiedEmailComponent } from '../classified-email/classified-email.component';
 import { DuplicateComponent } from '../duplicate-mail/duplicate.component';
+
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -14,8 +15,6 @@ import { ApiService } from '../../services/api.service';
 })
 export class DashboardComponent {
   constructor(private http: HttpClient, private apiService: ApiService) {}
-
-  
 
   response: Array<{ 
     email_subject: string; 
