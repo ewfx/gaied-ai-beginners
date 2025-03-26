@@ -1,0 +1,22 @@
+
+   <div class="row">
+
+    <!-- List of Security Rules -->
+    <div  *ngFor="let rule of securityRules">
+          
+        <form (ngSubmit)="updateSecurityRule(rule)">
+            <div class="mb-3">
+              <label for="rules-{{ rule.collection }}" class="form-label">Rules </label>
+              <textarea
+                id="rules-{{ rule.collection }}"
+                class="form-control"
+                [(ngModel)]="rule.rulesString"
+                name="rulesString"
+                rows="3"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Update Rule</button>
+          </form>
+        </div>
+    </div>
+

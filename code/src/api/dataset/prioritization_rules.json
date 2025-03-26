@@ -1,0 +1,45 @@
+{
+  "PrioritizationRules": [
+    {
+      "priority": 1,
+      "request_type": ["Money Movement-Inbound"],
+      "description": "refers to requests where the receiver is expected to fund or transfer money into the sender's account (e.g., \"PLEASE FUND YOUR SHARE\")."
+  
+    },
+    {
+      "priority": 2,
+      "request_type": ["Money Movement-Outbound"],
+      "description": "refers to requests where the sender is expected to transfer money out to the receiver (e.g., \"Please disburse the loan amount\")."
+    },
+    {
+      "priority": 3,
+      "request_type": ["Money Movement-Inbound", "Money Movement-Outbound"],
+      "description": "Should take precedence over all other request types if the content includes funding requests."
+    },
+    {
+      "priority": 4,
+      "request_type": ["Loan Disbursement", "Loan Repayment"],
+      "description": "Should take precedence over 'Adjustment', 'Fee Payment', and other non-financial requests."
+    },
+    {
+      "priority": 5,
+      "request_type": ["Adjustment"],
+      "description": "Should take precedence over 'Loan Status Inquiry', 'Loan Renewal', and other low-priority requests."
+    },
+    {
+      "priority": 6,
+      "request_type": ["Fee Payment"],
+      "description": "Should take precedence over 'Loan Servicing Reports' and other informational requests."
+    },
+    {
+      "priority": 7,
+      "request_type": ["Fraud Investigation"],
+      "description": "Should take precedence over all non-financial requests due to its critical nature."
+    },
+    {
+      "priority": 8,
+      "request_type": ["Loan Servicing Reports"],
+      "description": "Should only be classified if no higher-priority requests are present."
+    }
+  ]
+}

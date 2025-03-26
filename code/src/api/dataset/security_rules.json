@@ -1,0 +1,15 @@
+[
+    {
+        "collection": "Confidential",
+        "rules": [
+            "BORROWER",
+            "DEAL NAME",
+            "Reference",
+            "ABA #",
+            "Account Name",
+            "Ref",
+            "Telephone #",
+            "Fax #"
+        ]
+    }
+]

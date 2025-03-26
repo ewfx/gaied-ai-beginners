@@ -1,0 +1,227 @@
+{
+    "CommercialBankLendingService": {
+        "RequestTypes": [
+            {
+                "type": "Loan Application",
+                "subRequestTypes": [
+                    "Personal Loan Application",
+                    "Business Loan Application",
+                    "Home Loan Application",
+                    "Auto Loan Application",
+                    "Student Loan Application"
+                ]
+            },
+            {
+                "type": "Loan Modification",
+                "subRequestTypes": [
+                    "Interest Rate Change",
+                    "Loan Term Extension",
+                    "Repayment Schedule Adjustment",
+                    "Refinancing Request"
+                ]
+            },
+            {
+                "type": "Loan Disbursement",
+                "subRequestTypes": [
+                    "Disbursement of Personal Loan",
+                    "Disbursement of Business Loan",
+                    "Disbursement of Mortgage Loan",
+                    "Disbursement of Auto Loan"
+                ]
+            },
+            {
+                "type": "Loan Repayment",
+                "subRequestTypes": [
+                    "Full Repayment",
+                    "Partial Repayment",
+                    "Early Repayment Request",
+                    "Regular Installment Payment"
+                ]
+            },
+            {
+                "type": "Loan Closure",
+                "subRequestTypes": [
+                    "Loan Paid Off",
+                    "Loan Settlement",
+                    "Account Closure Request"
+                ]
+            },
+            {
+                "type": "Loan Renewal",
+                "subRequestTypes": [
+                    "Personal Loan Renewal",
+                    "Business Loan Renewal",
+                    "Mortgage Loan Renewal"
+                ]
+            },
+            {
+                "type": "Loan Status Inquiry",
+                "subRequestTypes": [
+                    "Loan Approval Status",
+                    "Loan Repayment Status",
+                    "Loan Disbursement Status",
+                    "Loan Remaining Balance"
+                ]
+            },
+            {
+                "type": "Adjustment",
+                "subRequestTypes": []
+            },
+            {
+                "type": "AU Transfer",
+                "subRequestTypes": [
+                    "Transfer of Loan to AU Account",
+                    "AU Loan Transfer Request"
+                ]
+            },
+            {
+                "type": "Closing Notice",
+                "subRequestTypes": [
+                    "Loan Account Closing Notice",
+                    "Pre-Closing Loan Notice",
+                    "Final Loan Settlement Notice",
+                    "Reallocation Fees",
+                    "Amendment Fees",
+                    "Reallocation Principal"
+                ]
+            },
+            {
+                "type": "Commitment Change",
+                "subRequestTypes": [
+                    "Change in Loan Commitment",
+                    "Amendment of Loan Commitment Terms",
+                    "Cashless Roll",
+                    "Decrease",
+                    "Increase"
+                ]
+            },
+            {
+                "type": "Fee Payment",
+                "subRequestTypes": [
+                    "Loan Processing Fee Payment",
+                    "Late Payment Fee Payment",
+                    "Prepayment Fee Payment",
+                    "Service Fee Payment",
+                    "Ongoing Fee Payment",
+                    "Letter of Credit Fee Payment"
+                ]
+            },
+            {
+                "type": "Money Movement-Inbound",
+                "subRequestTypes": [
+                    "Inbound Loan Payment",
+                    "Inbound Transfer from Another Bank",
+                    "Inbound Payment from Borrower",
+                    "Principal",
+                    "Interest",
+                    "Principal+Interest",
+                    "Principal+Interest+Fee"
+                ]
+            },
+            {
+                "type": "Money Movement-Outbound",
+                "subRequestTypes": [
+                    "Outbound Loan Disbursement",
+                    "Outbound Transfer to Borrower",
+                    "Outbound Transfer to Another Bank",
+                    "Timebound",
+                    "Foreign Currency"
+                ]
+            },
+            {
+                "type": "Escrow Management",
+                "subRequestTypes": [
+                    "Escrow Account Setup",
+                    "Escrow Payment Inquiry",
+                    "Escrow Balance Adjustment",
+                    "Escrow Disbursement Request",
+                    "Tax and Insurance Payment Inquiry"
+                ]
+            },
+            {
+                "type": "Collateral Management",
+                "subRequestTypes": [
+                    "Collateral Release Request",
+                    "Collateral Substitution",
+                    "Collateral Valuation Inquiry",
+                    "Collateral Documentation Request"
+                ]
+            },
+            {
+                "type": "Dispute Resolution",
+                "subRequestTypes": [
+                    "Payment Dispute",
+                    "Account Balance Dispute",
+                    "Loan Terms Dispute",
+                    "Escrow Dispute"
+                ]
+            },
+            {
+                "type": "Tax and Insurance",
+                "subRequestTypes": [
+                    "Tax Payment Inquiry",
+                    "Insurance Payment Inquiry",
+                    "Tax Document Request",
+                    "Insurance Policy Update"
+                ]
+            },
+            {
+                "type": "Customer Communication",
+                "subRequestTypes": [
+                    "Notification Preferences Update",
+                    "Loan Servicing Updates",
+                    "Communication History Request"
+                ]
+            },
+            {
+                "type": "Regulatory Compliance",
+                "subRequestTypes": [
+                    "Compliance Certificate Request",
+                    "Regulatory Reporting Inquiry",
+                    "Audit Request",
+                    "KYC (Know Your Customer) Update"
+                ]
+            },
+            {
+                "type": "Loan Servicing Reports",
+                "subRequestTypes": [
+                    "Loan Performance Report",
+                    "Payment History Report",
+                    "Escrow Account Report",
+                    "Loan Portfolio Summary"
+                ]
+            },
+            {
+                "type": "Fraud Investigation",
+                "subRequestTypes": [
+                    "Fraudulent Payment Investigation",
+                    "Unauthorized Account Access Inquiry",
+                    "Fraudulent Loan Application Report"
+                ]
+            },
+            {
+                "type": "Payment Plan Setup",
+                "subRequestTypes": [
+                    "New Payment Plan Setup",
+                    "Payment Plan Modification",
+                    "Payment Plan Cancellation"
+                ]
+            },
+            {
+                "type": "Loan Servicing Termination",
+                "subRequestTypes": [
+                    "Termination of Servicing Agreement",
+                    "Transfer of Servicing to Another Agency",
+                    "Final Servicing Report Request"
+                ]
+            },
+            {
+                "type": "Test1",
+                "subRequestTypes": [
+                    "Loan1",
+                    "Loan2"
+                ]
+            }
+        ]
+    }
+}
