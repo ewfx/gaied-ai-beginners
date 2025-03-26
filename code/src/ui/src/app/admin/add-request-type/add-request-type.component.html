@@ -29,7 +29,7 @@
       </td>
       <!-- Editable Sub Request Types -->
       <td>
-        <span *ngIf="!request.isEditing">{{ request.subRequestTypes?.join(', ') || 'N/A' }}</span>
+        <span *ngIf="!request.isEditing">{{ request.subRequestTypes.join(', ') || 'N/A' }}</span>
         <input
           *ngIf="request.isEditing"
           type="text"

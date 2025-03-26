@@ -2,6 +2,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './app.component.css', standalone: true, 
   imports: [RouterModule, HttpClientModule] 
 })
-export class AppComponent implements OnInit {
-  title = 'ang-base-sf';
+export class AppComponent  {
+  title = 'email-classification-ui';
+  constructor() {} 
+  
 
-  ngOnInit() {
-    console.log('AppComponent initialized');
-  }
+  
 }

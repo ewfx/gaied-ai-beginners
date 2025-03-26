@@ -1,6 +1,6 @@
 
 <div class="d-flex justify-content-end mb-3 pt-3">
-  <button class="btn btn-primary me-2">Classify</button>
+  <button class="btn btn-primary me-2" (click)="process_and_classify_emails()">{{isLoading?"Classifying":"Classify"}}</button>
   <!-- Upload Button -->
   <label class="btn btn-secondary">
     Upload

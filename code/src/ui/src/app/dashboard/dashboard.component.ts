@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { ClassifiedEmailComponent } from '../classified-email/classified-email.component';
 import { DuplicateComponent } from '../duplicate-mail/duplicate.component';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'dashboard',
@@ -12,7 +13,28 @@ import { DuplicateComponent } from '../duplicate-mail/duplicate.component';
   imports: [CommonModule,ClassifiedEmailComponent,DuplicateComponent],
 })
 export class DashboardComponent {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private apiService: ApiService) {}
+
+  
+
+  response: Array<{ 
+    email_subject: string; 
+    request_type: string; 
+    request_subtype: string; 
+    confidence_score: number; 
+    reasoning: string 
+  }> = [];
+  isLoading: boolean = false; 
+
+  process_and_classify_emails() {
+    this.isLoading = true;
+    this.apiService.process_and_classify_emails().subscribe(
+      (data) => {
+        this.response = Array.isArray(data.response) ? data.response : [data.response]; 
+        this.isLoading = false; 
+        alert('File processed successfully!');
+      });
+  }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
