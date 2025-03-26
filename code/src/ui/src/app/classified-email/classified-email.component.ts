@@ -1,23 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ApiService} from '../../services/api.service'
+import {ApiService} from '../../services/api.service';
+import { ClassifiedEmailResponse } from '../Models/emailClassification';
 
-interface ClassifiedContent {
-  subject: string;
-  body: string;
-  date : string;
-  content: string;
-}
-interface ClassifiedEmail {
-  message_id: string;
-  subject: string;
-  from: string;
-  to: string;
-  date: string;
-  body: string;
-  classify_content: ClassifiedContent;
-  confidentscore: number;
-}
+
 
 @Component({
   selector: 'classified-email',
@@ -28,7 +14,7 @@ interface ClassifiedEmail {
 })
 
 export class ClassifiedEmailComponent implements OnInit {
-  classifiedEmail: ClassifiedEmail[] = [];
+  classifiedEmail: ClassifiedEmailResponse[] = [];
     constructor(private apiService: ApiService) { }
     
     ngOnInit(): void {
