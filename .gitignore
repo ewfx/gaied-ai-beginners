@@ -217,3 +217,4 @@ testem.log
 .DS_Store
 Thumbs.db
 /.vs
+/code/src/ui/node_modules
