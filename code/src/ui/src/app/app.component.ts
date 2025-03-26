@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router'; 
 
@@ -5,7 +6,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css', standalone: true, 
-  imports: [RouterModule] 
+  imports: [RouterModule, HttpClientModule] 
 })
 export class AppComponent implements OnInit {
   title = 'ang-base-sf';
