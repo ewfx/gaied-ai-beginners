@@ -63,7 +63,6 @@ async def get_duplicate_mails():
             duplicate_emails = json.load(file)
         return duplicate_emails
 
-
 UPLOAD_FOLDER = "uploaded_files"  # Define the folder where files will be saved
 
 # API to upload a file
@@ -80,6 +79,7 @@ async def upload_file(file: UploadFile = File(...)):
     with open(file_path, "wb") as f:
         f.write(await file.read())
     return {"message": f"File '{file.filename}' uploaded successfully to '{UPLOAD_FOLDER}'."}
+
 
 # Include the routers
 app.include_router(requesttypes_router, prefix="/request-types", tags=["Request Types"])
