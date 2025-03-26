@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestTypeService } from '../../../services/request-type.service';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 interface RequestType {
   type: string;
@@ -8,7 +10,9 @@ interface RequestType {
 @Component({
   selector: 'app-add-request-type',
   templateUrl: './add-request-type.component.html',
-  styleUrl: './add-request-type.component.css'
+  styleUrl: './add-request-type.component.css',
+  standalone: true,
+  imports: [CommonModule] 
 })
 export class AddRequestTypeComponent implements OnInit {
 
@@ -17,7 +21,7 @@ export class AddRequestTypeComponent implements OnInit {
   subRequestTypeString: string = '';
   selectedRequestType: RequestType | null = null;
 
-  constructor(private requestTypeService: RequestTypeService) {}
+  constructor(private requestTypeService: RequestTypeService) { }
 
   ngOnInit(): void {
     this.loadRequestTypes();

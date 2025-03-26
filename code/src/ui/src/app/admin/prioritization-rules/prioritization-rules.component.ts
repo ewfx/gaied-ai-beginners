@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PrioritizationRulesService } from '../../../services/prioritization-rules.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-prioritization-rules',
   templateUrl: './prioritization-rules.component.html',
-  styleUrl: './prioritization-rules.component.css'
+  styleUrl: './prioritization-rules.component.css',
+  standalone: true,
+  imports:[CommonModule]
 })
 export class PrioritizationRulesComponent {
 
