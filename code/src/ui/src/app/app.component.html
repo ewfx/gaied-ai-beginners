@@ -1,36 +1,28 @@
-<div class="container mt-5">
-  <h1 class="text-center">Email Classification</h1>
-  
-  <form (ngSubmit)="process_and_classify_emails()" class="mt-4">    
-    <button type="submit" class="btn btn-primary" [disabled]="isLoading">
-      {{ isLoading ? 'Classifying...' : 'Classify' }}
+
+<div class="row">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="col-4">
+    <a class="navbar-brand" href="#">Email Classification</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-  </form>
-
-  <div *ngIf="response" class="mt-4">
-    <h2>Classification Result</h2>
-    <div class="card" *ngFor="let resp of response">
-      <div class="card-header">
-        <h3>{{ resp?.email_subject }}</h3>
-      <div class="card-body">
-        <p><strong>Request Type:</strong> {{ resp?.request_type }}</p>
-        <p><strong>Request Subtype:</strong> {{ resp?.request_subtype }}</p>
-        <p><strong>Confidence Score:</strong></p>
-
-        <div class="progress">
-          <div
-            class="progress-bar"
-            role="progressbar"
-            [style.width.%]="resp?.confidence_score"
-            [attr.aria-valuenow]="resp?.confidence_score"
-            aria-valuemin="0"
-            aria-valuemax="100"
-          >
-            {{ resp?.confidence_score }}%
-          </div>          
-        </div>
-        <div><p>{{resp?.reasoning}}</p></div>
-      </div>
+  </div>
+  <div class="col-8">
+    <div class="collapse navbar-collapse float-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item"> 
+          <a class="nav-link active" routerLink="/test1" aria-current="page" >Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin" >Admin</a>
+        </li> 
+        </ul> 
+      </div>      
     </div>
   </div>
+</nav>
+
+  <router-outlet></router-outlet>
+  
 </div>
