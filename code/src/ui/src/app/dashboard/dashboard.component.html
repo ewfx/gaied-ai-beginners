@@ -1,8 +1,19 @@
+
 <div class="d-flex justify-content-end mb-3 pt-3">
-    <button class="btn btn-primary me-2">Classify</button>
-    <button class="btn btn-secondary">Upload</button>
+  <button class="btn btn-primary me-2">Classify</button>
+  <!-- Upload Button -->
+  <label class="btn btn-secondary">
+    Upload
+    <input
+      type="file"
+      accept=".eml,.msg"
+      (change)="onFileSelected($event)"
+      hidden
+    />
+  </label>
 </div>
-<div class="container mt-4">
+<div class=" mt-4">
+
   <!-- Tab Navigation -->
   <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
     <li class="nav-item" role="presentation">
