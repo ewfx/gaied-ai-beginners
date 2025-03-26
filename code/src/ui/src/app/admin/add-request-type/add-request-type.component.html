@@ -1,33 +1,75 @@
 <div class="d-flex justify-content-end mb-3">
-  
-<button class="btn btn-sm btn-success" (click)="onAddRequestType()">
-    <i class="bi bi-plus"></i> Add <!-- Bootstrap Add Icon -->
+  <button class="btn btn-sm btn-success" (click)="onAddRequestType()">
+    <i class="bi bi-plus"></i> Add
   </button>
-  </div>
+</div>
+
 <table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col" style="width: 5%;">#</th>
-            <th scope="col" style="width: 20%;">Request Type</th>
-            <th scope="col" style="width: 60%;">Sub Request Types</th> <!-- Set 60% width -->
-            <th scope="col" style="width: 15%;">Action</th>
-          </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let request of requestTypes; let i = index">
-            <th scope="row">{{ i + 1 }}</th>
-            <td>{{ request.type }}</td>
-            <td>{{ request.subRequestTypes.join(', ') || 'N/A' }}</td>
-            <td>
-                <!-- Edit Button -->
-                <button class="btn btn-sm btn-primary me-2" (click)="onEdit(request)">
-                  <i class="bi bi-pencil"></i>
-                </button>
-                <!-- Delete Button -->
-                <button class="btn btn-sm btn-danger" (click)="onDelete(request.type)">
-                  <i class="bi bi-trash"></i> 
-                </button>
-              </td>
-        </tr>
-      </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col" style="width: 5%;">#</th>
+      <th scope="col" style="width: 20%;">Request Type</th>
+      <th scope="col" style="width: 60%;">Sub Request Types</th>
+      <th scope="col" style="width: 15%;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let request of requestTypes; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <!-- Editable Request Type -->
+      <td>
+        <span *ngIf="!request.isEditing">{{ request.type }}</span>
+        <input
+          *ngIf="request.isEditing"
+          type="text"
+          class="form-control form-control-sm"
+          [(ngModel)]="request.type"
+        />
+      </td>
+      <!-- Editable Sub Request Types -->
+      <td>
+        <span *ngIf="!request.isEditing">{{ request.subRequestTypes?.join(', ') || 'N/A' }}</span>
+        <input
+          *ngIf="request.isEditing"
+          type="text"
+          class="form-control form-control-sm"
+          [(ngModel)]="request.subRequestTypesString"
+        />
+      </td>
+      <td>
+        <!-- Edit Button -->
+        <button
+          class="btn btn-sm btn-primary me-2"
+          *ngIf="!request.isEditing"
+          (click)="onEdit(request)"
+        >
+          <i class="bi bi-pencil"></i>
+        </button>
+        <!-- Save Button -->
+        <button
+          class="btn btn-sm btn-success me-2"
+          *ngIf="request.isEditing"
+          (click)="onSave(request)"
+        >
+          <i class="bi bi-check"></i>
+        </button>
+        <!-- Cancel Button -->
+        <button
+          class="btn btn-sm btn-secondary"
+          *ngIf="request.isEditing"
+          (click)="onCancel(request)"
+        >
+          <i class="bi bi-x"></i>
+        </button>
+        <!-- Delete Button -->
+        <button
+          class="btn btn-sm btn-danger"
+          *ngIf="!request.isEditing"
+          (click)="onDelete(request.type)"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

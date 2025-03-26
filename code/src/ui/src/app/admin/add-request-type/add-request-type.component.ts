@@ -1,33 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { RequestTypeService } from '../../../services/request-type.service';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RequestTypeService } from '../../../services/request-type.service';
 
-interface RequestType {
+export interface RequestType {
   type: string;
   subRequestTypes: string[];
+  subRequestTypesString?: string; // Temporary string for editing
+  isEditing?: boolean; // Flag to track edit state
+  isAdding?: boolean; // Flag to track add state
 }
+
 @Component({
   selector: 'app-add-request-type',
-  templateUrl: './add-request-type.component.html',
-  styleUrl: './add-request-type.component.css',
   standalone: true,
-  imports: [CommonModule] 
+  imports: [FormsModule,CommonModule],
+  templateUrl: './add-request-type.component.html',
+  styleUrls: ['./add-request-type.component.css'],
 })
 export class AddRequestTypeComponent implements OnInit {
-
   requestTypes: RequestType[] = [];
-  newRequestType: RequestType = { type: '', subRequestTypes: [] };
-  subRequestTypeString: string = '';
-  selectedRequestType: RequestType | null = null;
 
-  constructor(private requestTypeService: RequestTypeService) { }
+  constructor(private requestTypeService: RequestTypeService) {}
 
   ngOnInit(): void {
     this.loadRequestTypes();
   }
 
-  // Load request types and ensure response is an array
   loadRequestTypes() {
     this.requestTypeService.loadRequestTypes().subscribe((data: any) => {
       if (data?.CommercialBankLendingService?.RequestTypes && Array.isArray(data.CommercialBankLendingService.RequestTypes)) {
@@ -38,52 +37,75 @@ export class AddRequestTypeComponent implements OnInit {
       }
     });
   }
-// Update subRequestTypes list dynamically
-updateSubtypeList() {
-  this.newRequestType.subRequestTypes = this.subRequestTypeString.split(',').map(s => s.trim());
-}
 
-// Add a new request type
-onAddRequestType() {
-  if (this.newRequestType.type) {
-    this.updateSubtypeList();
-    this.requestTypeService.addRequestType(this.newRequestType).subscribe(() => {
-      this.loadRequestTypes();
-      this.newRequestType = { type: '', subRequestTypes: [] };
-      this.subRequestTypeString = '';
-    });
+  onAddRequestType(): void {
+    const newRequest: RequestType = {
+      type: '',
+      subRequestTypes: [],
+      subRequestTypesString: '',
+      isEditing: true, 
+      isAdding:true
+    };
+
+    // Add the new request at the beginning of the array
+    this.requestTypes.unshift(newRequest);
   }
-}
 
-// Edit request type
-onEdit(request: RequestType) {
-  this.selectedRequestType = { ...request };
-  this.subRequestTypeString = this.selectedRequestType.subRequestTypes.join(', ');
-}
 
-// Update request type
-updateRequestType() {
-  if (this.selectedRequestType) {
-    this.selectedRequestType.subRequestTypes = this.subRequestTypeString.split(',').map(s => s.trim());
-
-    this.requestTypeService.updateRequestType(this.selectedRequestType).subscribe({
-      next: () => {
+  OnAdd(request: RequestType): void {
+    
+      this.requestTypeService.addRequestType(request).subscribe(() => {
         this.loadRequestTypes();
-        this.selectedRequestType = null;
-        this.subRequestTypeString = '';
-      },
-      error: (error) => {
-        console.error('Update Error:', error);
-        alert(`Update failed: ${error.error?.detail || 'Something went wrong!'}`);
-      }
+       
+      });
+    }
+  
+
+  onEdit(request: RequestType): void {
+     request.subRequestTypesString = request.subRequestTypes.join(', ');
+    request.isEditing = true;
+  }
+
+  onSave(request: RequestType): void {
+    request.isEditing = false;    
+    request.subRequestTypes = request.subRequestTypesString
+      ? request.subRequestTypesString.split(',').map((s) => s.trim())
+      : [];
+    if(request.isAdding)
+      this.OnAdd(request);
+    else
+      this.updateRequestType(request);
+    
+  }
+
+  updateRequestType(request: RequestType): void {
+  
+      this.requestTypeService.updateRequestType(request).subscribe({
+        next: () => {
+          this.loadRequestTypes();
+        },
+        error: (error) => {
+          console.error('Update Error:', error);
+          alert(`Update failed: ${error.error?.detail || 'Something went wrong!'}`);
+        }
+      });
+    }
+  
+
+  onCancel(request: RequestType): void {
+    if (!request.type && !request.subRequestTypes.length) {
+      // If the request is empty, remove it from the array
+      this.requestTypes = this.requestTypes.filter((r) => r !== request);
+    } else {
+      request.isEditing = false;
+      // Reset the subRequestTypesString to the original value
+      request.subRequestTypesString = request.subRequestTypes.join(', ');
+    }
+  }
+
+  onDelete(type: string) {
+    this.requestTypeService.deleteRequestType(type).subscribe(() => {
+      this.loadRequestTypes();
     });
   }
-}
-
-// Delete request type
-onDelete(type: string) {
-  this.requestTypeService.deleteRequestType(type).subscribe(() => {
-    this.loadRequestTypes();
-  });
-}
 }
