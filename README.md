@@ -177,7 +177,7 @@ Non-Technical Challenges
 - 🔹 Frontend: Angular
 - 🔹 Backend: Node.js / FastAPI 
 - 🔹 Database: PostgreSQL / Firebase
-- 🔹 Other: OpenAI API , [Tesseract](https://github.com/tesseract-ocr/tesseract/releases)
+- 🔹 Other: OpenAI API , Tesseract
 
 ## 👥 Team
 
