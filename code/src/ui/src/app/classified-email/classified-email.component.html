@@ -1,0 +1,32 @@
+<table class="table table-hover table-bordered table-striped">
+  <thead class="table-primary">
+      <tr>
+          <th scope="col" style="width: 2%;">#</th>
+          <th scope="col" style="width: 10%;">Subject</th>
+          <th scope="col" style="width: 10%;">From</th> <!-- Set 60% width -->
+          <th scope="col" style="width: 8%;">Date</th>
+          <th scope="col" style="width: 15%;">Primay</th>
+          <th scope="col" style="width: 15%;">Secondary</th>
+          <th scope="col" style="width: 10%;">Confident Score</th>
+          <th scope="col" style="width: 30%;">Reason</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr class="table-striped" *ngFor="let email of classifiedEmail; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ email.subject }}</td>
+          <td>{{ email.from }}</td>
+            <td>{{ email.date | date: 'MM/dd/yyyy, h:mm a' }}</td>
+          <td><B>Type</B>: {{ email.classification.Request[0].request_type}} <br />
+            <B>SubType</B>: {{ email.classification.Request[0].request_subtype }}
+          </td>  
+          <td><B>Type</B>: {{ email.classification.Request[1].request_type}} <br />
+            <B>SubType</B>: {{ email.classification.Request[1].request_subtype }}
+          </td>
+          <td><B>PrimaryAsk</B>: {{ email.classification.Request[0].confidence_score}}%<br/>
+            <B>SecondaryAsk</B>:{{email.classification.Request[1].confidence_score}}%
+          </td>
+          <td>{{ email.classification.reasoning }}</td>
+      </tr>
+    </tbody>
+</table>

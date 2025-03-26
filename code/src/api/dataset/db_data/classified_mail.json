@@ -17,6 +17,72 @@
                 "content": "ABC Bank\nLoan Agency Services\nDate : 02-03-2025\nTo : BCD Bank\nATTN : UDHAYA\nFax : 789-451-125\nRe : ABC-AEDE-12 LLC, TERM LOAN A-2\nDescription: Facility Lender Share Adjustment\nBORROWER: ABC-AEDE-12 LLC\nDEAL NAME: XYZ LLC $171.3MM 11-03-2025\nEffective 04-Feb-2025, the lender Shares of facility TERM LOAN A-2 has been adjusted. Your\nshare of the commitment was USD 5,518,249.19. It has been increased to USD 5,542,96.55.\nFor: BCD Bank\nReference: XYZ LLC $171.3MM 11-03-2025\nIf you have any questions, please call the undersigned.\n********************************************** COMMENT *************************************************\nPLEASE FUND YOUR SHARE OF $24,714.36\nBank Name: ABC Bank\nABA # 01723562\nAccount #: 0026693011\nAccount Name: LIQ CLO Account\nRef:ABC-Atlantic LLC\n**************************************************************************************************************\nRegards,\nSCOTT WALLACE\nTelephone #:\nFax #:\nABC Commercial Banking is a brand name of ABC Bank."
             }
         ],
-        "classify_content": "{\"subject\": \"ABC Bank share adjustment\", \"body\": \"Hi,\\n\\nThe current share has been increased to USD 5,542,96.55.\\n\\nPFA for more details\\n\\n\\n--\\nRegards,\\nKannan Krishnan\\n+91 850 866 8966\\n\", \"attachments\": [{\"filename\": \"ABC Bank - Loan Agency.pdf\", \"content_type\": \"application/pdf\", \"size\": 6346, \"file_extension\": \".pdf\", \"content\": \"ABC Bank\\nLoan Agency Services\\nDate : 02-03-2025\\nTo : BCD Bank\\nATTN : UDHAYA\\nFax : 789-451-125\\nRe : ABC-AEDE-12 LLC, TERM LOAN A-2\\nDescription: Facility Lender Share Adjustment\\nDQTTQYGT: CDE-CGFG-34 NNE\\nFGCN PCOG: ZAB NNE $393.5OO 33-25-4247\\nEffective 04-Feb-2025, the lender Shares of facility TERM LOAN A-2 has been adjusted. Your\\nshare of the commitment was USD 5,518,249.19. It has been increased to USD 5,542,96.55.\\nFor: BCD Bank\\nTghgtgpeg: ZAB NNE $393.5OO 33-25-4247\\nIf you have any questions, please call the undersigned.\\n********************************************** COMMENT *************************************************\\nPLEASE FUND YOUR SHARE OF $24,714.36\\nBank Name: ABC Bank\\nCDC # 23945784\\nAccount #: 0026693011\\nCeeqwpv Pcog: NKS ENQ Ceeqwpv\\nTgh:CDE-Cvncpvke NNE\\n**************************************************************************************************************\\nRegards,\\nSCOTT WALLACE\\nVgngrjqpg #:\\nHcz #:\\nABC Commercial Banking is a brand name of ABC Bank.\"}]}"
+        "classify_content": "{\"subject\": \"ABC Bank share adjustment\", \"body\": \"Hi,\\n\\nThe current share has been increased to USD 5,542,96.55.\\n\\nPFA for more details\\n\\n\\n--\\nRegards,\\nKannan Krishnan\\n+91 850 866 8966\\n\", \"attachments\": [{\"filename\": \"ABC Bank - Loan Agency.pdf\", \"content_type\": \"application/pdf\", \"size\": 6346, \"file_extension\": \".pdf\", \"content\": \"ABC Bank\\nLoan Agency Services\\nDate : 02-03-2025\\nTo : BCD Bank\\nATTN : UDHAYA\\nFax : 789-451-125\\nRe : ABC-AEDE-12 LLC, TERM LOAN A-2\\nDescription: Facility Lender Share Adjustment\\nDQTTQYGT: CDE-CGFG-34 NNE\\nFGCN PCOG: ZAB NNE $393.5OO 33-25-4247\\nEffective 04-Feb-2025, the lender Shares of facility TERM LOAN A-2 has been adjusted. Your\\nshare of the commitment was USD 5,518,249.19. It has been increased to USD 5,542,96.55.\\nFor: BCD Bank\\nTghgtgpeg: ZAB NNE $393.5OO 33-25-4247\\nIf you have any questions, please call the undersigned.\\n********************************************** COMMENT *************************************************\\nPLEASE FUND YOUR SHARE OF $24,714.36\\nBank Name: ABC Bank\\nCDC # 23945784\\nAccount #: 0026693011\\nCeeqwpv Pcog: NKS ENQ Ceeqwpv\\nTgh:CDE-Cvncpvke NNE\\n**************************************************************************************************************\\nRegards,\\nSCOTT WALLACE\\nVgngrjqpg #:\\nHcz #:\\nABC Commercial Banking is a brand name of ABC Bank.\"}]}",
+        "classification": {
+            "PrimaryAsk": "Money Movement-Inbound",
+            "SecondaryAsk": "Adjustment",
+            "KeyElements": [
+                "USD 5,542,96.55",
+                "PLEASE FUND YOUR SHARE OF $24,714.36",
+                "Effective 04-Feb-2025"
+            ],
+            "reasoning": "The primary ask is classified as Money Movement-Inbound due to the explicit request for funding a share amount of $24,714.36. This request dominates the content due to the prioritization rules regarding money movements. The adjustment in shares is also mentioned but is considered a secondary aspect.",
+            "Request": [
+                {
+                    "request_type": "Money Movement-Inbound",
+                    "request_subtype": "Inbound Payment from Borrower",
+                    "confidence_score": 95.0
+                },
+                {
+                    "request_type": "Adjustment",
+                    "request_subtype": "",
+                    "confidence_score": 85.0
+                }
+            ],
+            "email_subject": "ABC Bank share adjustment"
+        }
+    },
+    {
+        "message_id": "<CAJB-KrOhS0UAM--_zEr-m1H5KY2Goywr9OfVp9QayyXBjbbb+A@mail.gmail.com>",
+        "in_reply_to": "<CAKNbEGMoUr0c_OmggKRSjUrNNwe5z5DCVVzeiOV_NFWpuqHo3w@mail.gmail.com>",
+        "references": "<CAKNbEGMoUr0c_OmggKRSjUrNNwe5z5DCVVzeiOV_NFWpuqHo3w@mail.gmail.com>",
+        "subject": "Fwd: DocScanner 23 Mar 2025 3-15\u202fpm.pdf",
+        "from": "Kannan Krishnan <kannaa.krishnaa@gmail.com>",
+        "to": "aibeg_finance@hotmail.com",
+        "date": "Sun, 23 Mar 2025 18:12:27 +0530",
+        "body": "Check the details\n\n\n--\nRegards,\nKannan Krishnan\n+91 850 866 8966\n\n\n\n---------- Forwarded message ---------\nFrom: udhayakumar <g.udhayakumar17@gmail.com>\nDate: Sun, Mar 23, 2025 at 3:16\u202fPM\nSubject: DocScanner 23 Mar 2025 3-15\u202fpm.pdf\nTo: Kannan Krishnan <kannaa.krishnaa@gmail.com>\n\n\nThis one is the sample doc from the requirement doc\n",
+        "attachments": [
+            {
+                "filename": "DocScanner 23 Mar 2025 3-15\u202fpm.pdf",
+                "content_type": "application/pdf",
+                "size": 220660,
+                "file_extension": ".pdf",
+                "content": "BANK OF AMERICA\n\nnk ot Amarin. NA\nte. WELLS FARGO BANK NATIONAL ASSOCIATION\n\nete \u2018nee 2023\nar \u2018AGENT OEFAULT\nProne: 909998:9999\n= srreoeoa26\nEmo Bentreewetatorgs om\n\nRe \u2018CANTOR FITZGERALD LP USO 426MM MAR22 REVOLVER / CANTOR FITO0O37\nDeni cuSi: 13862EAEO\n\nBecisin  USa3B6REAEOS\n\nPocty CUSIP: 1386KEAFT\n\nFoomg Sm US23863EAF79\n\n(reer: usui058e22\n\n[eine 40Now.2023, CANTOR FITZGERALD LP has elected to repay under the SOFR (US) Term option total of USD\npoomean.ce\n\nPrevious Gia! principal balance: USD 45,000,000.00\n[Now Save! prnspa blancs\" USD 25,000,000.00\n\n\u2018This loan was effective 20012023 and is scheduled to repice on 20Nov-2023,\n\u2018Your snare of the USO 20,000,000.00 SOFR (US) Term option paymeat Is USO 4,413,76473.\n\nProwous Lender share Principal Salance USD 3,176,470.59\nNew Londr Shave Principal Slane\" USO 3.764,70888\n\n\u2018we wa ret USD 1.483, 764.74 0n te effective date, Please noo that () the Borrowor has nt Infact made-such\n\u2018eyomane a) any payment you revaive i exces of what was paid by the Brower o (i) we notty you that the payment\narcronecusly made, nen pursuant tothe provisions f the cea ecity, you agree to ret auch payment.\n\nFor. WELLS FARGO BANK NATIONAL ASSOCIATION\n\u2018e: WELLS FARGO BAT NA\n\n\u2018Aaa Number: 121000248\n\n\u2018count No KI000000000720\n\nReference CANTOR FITZGERALD LP USO 425MM MARZ2, SOFR (US) Term Principal Payment CANTOR FTOOGS7)\n\n\u2018Tanks & Regan,\n\n{JONNY HERNANDEZ\nTelopnone #: +19603880295\n{Email Jonny hemandes@bote.com\n\n\u2018This communications confidential and intended only forthe adresse. you are not the intended ecpient, you may not\n\u2018copy acne or dstbute his message to anyone alse. Any such actons maybe UniamflIfyou have recoived tis\n\u2018communication In err, please contac the sender Yo nfonm hime har of ha rer.\n\nSe ee\n\n"
+            }
+        ],
+        "classify_content": "{\"subject\": \"Fwd: DocScanner 23 Mar 2025 3-15\\u202fpm.pdf\", \"body\": \"Check the details\\n\\n\\n--\\nRegards,\\nKannan Krishnan\\n+91 850 866 8966\\n\\n\\n\\n---------- Forwarded message ---------\\nFrom: udhayakumar <g.udhayakumar17@gmail.com>\\nDate: Sun, Mar 23, 2025 at 3:16\\u202fPM\\nSubject: DocScanner 23 Mar 2025 3-15\\u202fpm.pdf\\nTo: Kannan Krishnan <kannaa.krishnaa@gmail.com>\\n\\n\\nThis one is the sample doc from the requirement doc\\n\", \"attachments\": [{\"filename\": \"DocScanner 23 Mar 2025 3-15\\u202fpm.pdf\", \"content_type\": \"application/pdf\", \"size\": 220660, \"file_extension\": \".pdf\", \"content\": \"BANK OF AMERICA\\n\\nnk ot Amarin. NA\\nte. WELLS FARGO BANK NATIONAL ASSOCIATION\\n\\nete \\u2018nee 2023\\nar \\u2018AGENT OEFAULT\\nProne: 909998:9999\\n= srreoeoa26\\nEmo Bentreewetatorgs om\\n\\nRe \\u2018CANTOR FITZGERALD LP USO 426MM MAR22 REVOLVER / CANTOR FITO0O37\\nDeni cuSi: 13862EAEO\\n\\nBecisin  USa3B6REAEOS\\n\\nPocty CUSIP: 1386KEAFT\\n\\nFoomg Sm US23863EAF79\\n\\n(reer: usui058e22\\n\\n[eine 40Now.2023, CANTOR FITZGERALD LP has elected to repay under the SOFR (US) Term option total of USD\\npoomean.ce\\n\\nPrevious Gia! principal balance: USD 45,000,000.00\\n[Now Save! prnspa blancs\\\" USD 25,000,000.00\\n\\n\\u2018This loan was effective 20012023 and is scheduled to repice on 20Nov-2023,\\n\\u2018Your snare of the USO 20,000,000.00 SOFR (US) Term option paymeat Is USO 4,413,76473.\\n\\nProwous Lender share Principal Salance USD 3,176,470.59\\nNew Londr Shave Principal Slane\\\" USO 3.764,70888\\n\\n\\u2018we wa ret USD 1.483, 764.74 0n te effective date, Please noo that () the Borrowor has nt Infact made-such\\n\\u2018eyomane a) any payment you revaive i exces of what was paid by the Brower o (i) we notty you that the payment\\narcronecusly made, nen pursuant tothe provisions f the cea ecity, you agree to ret auch payment.\\n\\nFor. WELLS FARGO BANK NATIONAL ASSOCIATION\\n\\u2018e: WELLS FARGO BAT NA\\n\\n\\u2018Aaa Number: 121000248\\n\\n\\u2018count No KI000000000720\\n\\nTghgtgpeg ECPVQT HKVBIGTCNF NR WUQ 647OO OCTB4, UQHT (WU) Vgto Rtkpekrcn Rcaogpv ECPVQT HVQQIU9)\\n\\n\\u2018Tanks & Regan,\\n\\n{JONNY HERNANDEZ\\nTelopnone #: +19603880295\\n{Email Jonny hemandes@bote.com\\n\\n\\u2018This communications confidential and intended only forthe adresse. you are not the intended ecpient, you may not\\n\\u2018copy acne or dstbute his message to anyone alse. Any such actons maybe UniamflIfyou have recoived tis\\n\\u2018communication In err, please contac the sender Yo nfonm hime har of ha rer.\\n\\nSe ee\\n\\n\"}]}",
+        "classification": {
+            "PrimaryAsk": "Loan Repayment",
+            "SecondaryAsk": "Loan Status Inquiry",
+            "KeyElements": [
+                "Previous principal balance: USD 45,000,000.00",
+                "New principal balance: USD 25,000,000.00",
+                "Scheduled to repay on 20 Nov 2023"
+            ],
+            "reasoning": "The content primarily revolves around a loan repayment scenario with specific numbers and dates. It discusses the principal balance, repayment schedule, and the obligations related to the loan. Although there are elements of communication forwarding and document sharing, the clear focus on loan repayment and amounts associated with it drives the primary classification.",
+            "Request": [
+                {
+                    "request_type": "Loan Repayment",
+                    "request_subtype": "Regular Installment Payment",
+                    "confidence_score": 95.0
+                },
+                {
+                    "request_type": "Loan Status Inquiry",
+                    "request_subtype": "Loan Repayment Status",
+                    "confidence_score": 80.0
+                }
+            ],
+            "email_subject": "Fwd: DocScanner 23 Mar 2025 3-15\u202fpm.pdf"
+        }
     }
 ]

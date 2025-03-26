@@ -24,4 +24,12 @@ export class ApiService {
   process_and_classify_emails(): Observable<any> {    
     return this.http.get(`${this.baseUrl}/process_and_classify_emails`);
   }
+
+  get_classify_emails(): Observable<any> {    
+    return this.http.get(`${this.baseUrl}/classified-mails`);
+  }
+
+  get_duplicate_emails(): Observable<any> {    
+    return this.http.get(`${this.baseUrl}/duplicate-mails`);
+  }
 }

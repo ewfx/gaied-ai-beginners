@@ -64,7 +64,7 @@ def process_and_classify_emails():
             classification = classify_content(email_content["classify_content"])
             classification["email_subject"] = email_content["subject"]
             email_results.append(classification)
-            add_to_classified_mail(email_content)
+            add_to_classified_mail(email_content,classification)
         # Move processed files to the 'processed' folder
         current_dir = os.path.dirname(os.path.abspath(__file__))
         source_folder = os.path.abspath(os.path.join(current_dir, "..", "mail_dropbox", "unread"))
@@ -184,7 +184,7 @@ def move_file_with_retry(source_file, destination_file, retries=3, delay=2):
             time.sleep(delay)
     print(f"Failed to move file after {retries} attempts: {source_file}")
 
-def add_to_classified_mail(email_content):
+def add_to_classified_mail(email_content, classification):
     """
     Adds the email content to the classified_mail.json file.
     :param email_content: The email content to add.
@@ -208,6 +208,7 @@ def add_to_classified_mail(email_content):
             # Initialize an empty list if the file does not exist
             data = []
 
+        email_content["classification"] = classification
         # Append the new email content
         data.append(email_content)
 

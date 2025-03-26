@@ -7,5 +7,32 @@
         "to": "aibeg_finance@hotmail.com",
         "date": "Tue, 25 Mar 2025 10:29:41 +0530",
         "reason": "Duplicate based on references. Might be follow-up mail for subject [ABC Bank share adjustment]."
+    },
+    {
+        "record#": 2,
+        "message_id": "<CAJB-KrNLCyYunYPwsN4p=movrf2CLiVfHk4OwXAmFRfBgHsd8w@mail.gmail.com>",
+        "subject": "ABC Bank share adjustment",
+        "from": "Kannan Krishnan <kannaa.krishnaa@gmail.com>",
+        "to": "aibeg_finance@hotmail.com",
+        "date": "Mon, 24 Mar 2025 13:33:22 +0530",
+        "reason": "Duplicate based on Message-ID."
+    },
+    {
+        "record#": 3,
+        "message_id": "<CAJB-KrOhS0UAM--_zEr-m1H5KY2Goywr9OfVp9QayyXBjbbb+A@mail.gmail.com>",
+        "subject": "Fwd: DocScanner 23 Mar 2025 3-15\u202fpm.pdf",
+        "from": "Kannan Krishnan <kannaa.krishnaa@gmail.com>",
+        "to": "aibeg_finance@hotmail.com",
+        "date": "Sun, 23 Mar 2025 18:12:27 +0530",
+        "reason": "Duplicate based on Message-ID."
+    },
+    {
+        "record#": 4,
+        "message_id": "<CAJB-KrOGfrH6V4p1NCWVtdukf9ZJF1QeZuFr+qVja0Kx98BqyQ@mail.gmail.com>",
+        "subject": "Inquiry About Loan Application Status",
+        "from": "Kannan Krishnan <kannaa.krishnaa@gmail.com>",
+        "to": "Kannan Krish <kannaa.krishnaa@hotmail.com>",
+        "date": "Sun, 23 Mar 2025 10:26:50 +0530",
+        "reason": "Duplicate based on threading information."
     }
 ]
