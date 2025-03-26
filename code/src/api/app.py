@@ -1,3 +1,4 @@
+import json
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
@@ -41,18 +42,25 @@ async def process_and_classify_emails_endpoint():
 @app.get("/classified-mails")
 async def get_classified_mails():
     file_path = os.path.join("data", "classified_mail.json")  # Adjust the path as needed
-    if not os.path.exists(file_path):
-        raise HTTPException(status_code=404, detail="classified_mail.json not found")
-    return FileResponse(file_path, media_type="application/json", filename="classified_mail.json")
+    CLASSIFIED_MAIL_JSON = os.path.join(
+    os.path.dirname(__file__), "dataset", "db_data", "classified_mail.json"
+    )
+    if os.path.exists(CLASSIFIED_MAIL_JSON):
+        with open(CLASSIFIED_MAIL_JSON, "r") as file:
+            return json.load(file)
+    return []
 
 # API to get duplicate_mail.json
 @app.get("/duplicate-mails")
 async def get_duplicate_mails():
     file_path = os.path.join("data", "duplicate_mail.json")  # Adjust the path as needed
-    if not os.path.exists(file_path):
-        raise HTTPException(status_code=404, detail="duplicate_mail.json not found")
-    return FileResponse(file_path, media_type="application/json", filename="duplicate_mail.json")
-
+    DUPLICATE_MAIL_JSON = os.path.join(
+    os.path.dirname(__file__), "dataset", "db_data", "duplicate_mail.json"
+    )
+    if os.path.exists(DUPLICATE_MAIL_JSON):
+        with open(DUPLICATE_MAIL_JSON, "r") as file:
+            duplicate_emails = json.load(file)
+        return duplicate_emails
 
 # Include the routers
 app.include_router(requesttypes_router, prefix="/request-types", tags=["Request Types"])

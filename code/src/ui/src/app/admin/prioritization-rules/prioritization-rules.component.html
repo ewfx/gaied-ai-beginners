@@ -1,0 +1,33 @@
+<div class="d-flex justify-content-end mb-3">
+  
+    <button class="btn btn-sm btn-success" (click)="addRule()">
+        <i class="bi bi-plus"></i> Add 
+      </button>
+      </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 5%;">#</th>
+                <th scope="col" style="width: 20%;">Request Type</th>
+                <th scope="col" style="width: 60%;">Description</th>
+                <th scope="col" style="width: 15%;">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let priority of priorities; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ priority.request_type }}</td>
+                <td>{{ priority.description || 'N/A' }}</td>
+                <td>
+                    <!-- Edit Button -->
+                    <button class="btn btn-sm btn-primary me-2" (click)="updateExistingRule()">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <!-- Delete Button -->
+                    <button class="btn btn-sm btn-danger" (click)="deleteRule(priority.priority)">
+                      <i class="bi bi-trash"></i> 
+                    </button>
+                  </td>
+            </tr>
+          </tbody>
+      </table>
